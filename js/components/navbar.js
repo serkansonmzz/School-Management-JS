@@ -22,8 +22,6 @@ const renderNavbar = () => {
                 <div class="loginBtn">
                     <img width="45" src="../img/profile.webp" alt="profile photo" />
                 </div>
-                 
-                </form>
             </div>
           </nav>`;
   return navbar;
