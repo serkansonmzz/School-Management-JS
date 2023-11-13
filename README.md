@@ -34,7 +34,10 @@ SMS/
 │ ├── components/
 │ │ ├── teacher.js
 │ │ ├── student.js
-│ │ └── class.js
+│ │ ├── class.js
+│ │ ├── dashboard.js
+│ │ ├── navbar.js
+│ │ └── footer.js
 │ ├── data/
 │ │ ├─- data.js # Data management
 │ │ └── initData.js # Initial data setup function
