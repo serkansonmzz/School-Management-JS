@@ -9,7 +9,6 @@ The School Management System (SMS) is a dynamic web application tailored for eff
 - Implement an organized folder structure for efficient project management.
 - Develop separate JavaScript and CSS directories for modular code organization.
 - Create specific JavaScript components for different functionalities like teacher, student, and class management.
-- Initiate a dynamic navigation bar with interactive content rendering.
 - Plan for the integration of LocalStorage for enhanced data persistence.
 - Ensure responsive design for optimal performance across various devices.
 
@@ -18,7 +17,6 @@ The School Management System (SMS) is a dynamic web application tailored for eff
 - **Organized Folder Structure**: A clean and structured directory, ensuring easy navigation and management of project files.
 - **Modular JavaScript Components**: Separate files for teachers, students, classes and dasboard within a 'components' directory, facilitating focused development and maintenance.
 - **Dynamic Data Handling**: Dummy data in `data.js`, with an `initData.js` function to set up initial application states.
-- **Responsive Navigation Bar**: A user-friendly navigation bar that dynamically updates content, enhancing the user experience.
 - **Consistent Layout**: The layout keeps the navigation bar and footer constant across different pages for a seamless user interface.
 - **LocalStorage Integration (Planned)**: Future implementation for robust and persistent data storage.
 
