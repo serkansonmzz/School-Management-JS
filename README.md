@@ -6,40 +6,41 @@ The School Management System (SMS) is a dynamic web application tailored for eff
 
 ## Project Objectives
 
-- Implement an organized folder structure for efficient project management.
-- Develop separate JavaScript and CSS directories for modular code organization.
-- Create specific JavaScript components for different functionalities like teacher, student, and class management.
-- Plan for the integration of LocalStorage for enhanced data persistence.
-- Ensure responsive design for optimal performance across various devices.
+- Establish a well-organized folder system to enhance project management and scalability.
+- Develop a dynamic navigation bar in the main app.js file, utilizing addEventListener to dynamically render content based on user interaction.
 
 ## Features
 
-- **Organized Folder Structure**: A clean and structured directory, ensuring easy navigation and management of project files.
-- **Modular JavaScript Components**: Separate files for teachers, students, classes and dasboard within a 'components' directory, facilitating focused development and maintenance.
-- **Dynamic Data Handling**: Dummy data in `data.js`, with an `initData.js` function to set up initial application states.
-- **Consistent Layout**: The layout keeps the navigation bar and footer constant across different pages for a seamless user interface.
-- **LocalStorage Integration (Planned)**: Future implementation for robust and persistent data storage.
+- **Dynamic Navigation Bar**: Implement a responsive and interactive navigation bar, dynamically rendering content and improving user engagement.
+- **Interactive Content Rendering**: Enhance user experience by dynamically updating page content through JavaScript event listeners in the main application file (app.js).
+- **Separation of Concerns**: Enhance code readability and maintainability by organizing distinct render methods for page components and modals, along with a dedicated helpers folder for auxiliary functions, ensuring a clear separation of functional logic within the project structure.
 
 ## File Structure
 
 ```
 SMS/
 │
-|-- img # Image file
-├── css/
-│ └── styles.css # Main stylesheet
+├── css/ # Main stylesheet
+│   └── styles.css
+├── img/ # Image files
 ├── js/
-│ ├── components/
-│ │ ├── teacher.js
-│ │ ├── student.js
-│ │ ├── class.js
-│ │ ├── dashboard.js
-│ │ ├── navbar.js
-│ │ └── footer.js
-│ ├── data/
-│ │ ├─- data.js # Data management
-│ │ └── initData.js # Initial data setup function
-│ └── app.js # Core JavaScript file
+│   ├── components/
+│   │   ├── modals/ # Modal components
+│   │   │   ├── renderClassModal.js
+│   │   │   ├── renderStudentModal.js
+│   │   │   └── renderTeacherModal.js
+│   │   ├── teacher.js
+│   │   ├── student.js
+│   │   ├── class.js
+│   │   ├── dashboard.js
+│   │   ├── navbar.js
+│   │   └── footer.js
+│   ├── data/
+│   │   ├── data.js # Data management
+│   │   └── initData.js # Initial data setup function
+│   ├── helpers/ # Helper functions
+│   │   └── utilize.js
+│   └── app.js # Core JavaScript file
 └── index.html # Main entry point
 └── README.md # Documentation
 
