@@ -1,3 +1,13 @@
+import {
+  renderNavbar,
+  renderDashboard,
+  renderStudentSection,
+  renderTeacherSection,
+  renderClassSection,
+  renderFooter,
+  makeActive,
+} from "./components/index.js";
+
 function handleDashboardLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderDashboard();
@@ -39,3 +49,6 @@ function initializeApp() {
       .addEventListener("click", handleClassesLinkClick);
   });
 }
+
+initializeApp();
+//calling the function that triggers the whole structure.
