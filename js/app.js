@@ -1,18 +1,22 @@
 function handleDashboardLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderDashboard();
+  makeActive(event);
 }
 function handleTeachersLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderTeacherSection();
+  makeActive(event);
 }
 function handleStudentsLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderStudentSection();
+  makeActive(event);
 }
 function handleClassesLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderClassSection();
+  makeActive(event);
 }
 
 function initializeApp() {
