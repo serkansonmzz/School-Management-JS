@@ -1,3 +1,5 @@
+import { manageShowModal } from "../../helpers/utilize";
+
 export const renderStudentModal = (studentId = null) => {
   const isEdit = studentId !== null;
   const modalTitle = isEdit ? "Edit Student" : "Add New Student";
@@ -7,25 +9,7 @@ export const renderStudentModal = (studentId = null) => {
 
   //modal business logic
   //modal is appearing and disappearing on screen
-  const existingModal = document.querySelector("#formArea");
-
-  if (existingModal) {
-    new bootstrap.Modal(existingModal).show();
-  } else {
-    document.body.insertAdjacentHTML("beforeend", modalHtml); //must be in the html structure before eventListener
-    const createdModal = document.querySelector("#formArea");
-    const modalInstance = new bootstrap.Modal(createdModal);
-
-    // Manage events when the modal is closed
-    createdModal.addEventListener("hidden.bs.modal", () => {
-      //'hidden.bs.modal' boostrap class
-      modalInstance.dispose();
-      createdModal.remove();
-    });
-
-    //show modal after all settings
-    modalInstance.show();
-  }
+  manageShowModal(modalHtml);
 };
 
 const createStudentModalHtml = (modalTitle, studentData) => {
