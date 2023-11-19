@@ -6,6 +6,7 @@ import {
   renderClassSection,
   renderFooter,
   makeActive,
+  initializeData,
 } from "./components/index.js";
 
 function handleDashboardLinkClick(event) {
@@ -48,6 +49,7 @@ function initializeApp() {
       .getElementById("classesLink")
       .addEventListener("click", handleClassesLinkClick);
   });
+  initializeData();
 }
 
 initializeApp();
