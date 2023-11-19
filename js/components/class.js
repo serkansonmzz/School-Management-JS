@@ -23,8 +23,8 @@ const renderClassSection = () => {
           <div class="card shadow h-100 px-3">
             <div class="card-body">
               <div class="d-flex justify-content-end mb-2">
-                <i class="bi bi-pencil-square mr-2"></i>
-                <i class="bi bi-dash-circle"></i>
+                <i class="bi bi-pencil-square mr-2 editClassButton"></i>
+                <i class="bi bi-dash-circle deleteClassButton"></i>
               </div>
               <h5 class="card-title">Cloud Class</h5>
               <h6 class="card-subtitle mb-2 text-muted">Ali Sayar</h6>

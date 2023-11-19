@@ -8,8 +8,8 @@ const renderStudentSection = () => {
           <div class="card shadow h-100 px-3">
             <div class="card-body">
               <div class="d-flex justify-content-end mb-2">
-                <i class="bi bi-pencil-square mr-2"></i>
-                <i class="bi bi-dash-circle mr-2"></i>
+                <i class="bi bi-pencil-square mr-2 editStudentButton"></i>
+                <i class="bi bi-dash-circle mr-2 deleteStudentButton"></i>
               </div>
               <h5 class="card-title">Max Hermann</h5>
               <h6 class="card-subtitle mb-2 text-muted">FullStack</h6>

@@ -26,8 +26,8 @@ const renderTeacherSection = () => {
           <div class="card shadow h-100 px-3">
             <div class="card-body">
               <div class="d-flex justify-content-end mb-2">
-                <i class="bi bi-pencil-square mr-2"></i>
-                <i class="bi bi-dash-circle"></i>
+                <i class="bi bi-pencil-square mr-2 editTeacherButton"></i>
+                <i class="bi bi-dash-circle deleteTeacherButton"></i>
               </div>
               <h5 class="card-title">Ali Sayar</h5>
               <h6 class="card-subtitle mb-2 text-muted">AWS Expert</h6>
