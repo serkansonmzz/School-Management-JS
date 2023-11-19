@@ -1,4 +1,5 @@
-import { manageShowModal } from "../../helpers/utilize.js";
+import { manageShowModal } from "../index.js";
+
 export const renderTeacherModal = () => {
   const isEdit = studentId !== null;
   const modalTitle = isEdit ? "Edit Teacher" : "Add New Teacher";

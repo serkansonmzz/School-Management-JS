@@ -1,4 +1,4 @@
-import { manageShowModal } from "../../helpers/utilize";
+import { manageShowModal } from "../index.js";
 
 export const renderClassModal = (itemId = null) => {
   const isEdit = itemId != null;

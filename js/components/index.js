@@ -9,3 +9,6 @@ export { renderFooter } from "./footer.js";
 export { renderTeacherModal } from "./modals/renderTeacherModal.js";
 export { renderStudentModal } from "./modals/renderStudentModal.js";
 export { renderClassModal } from "./modals/renderClassModal.js";
+export { manageShowModal } from "../helpers/utilize.js";
+export { getFromLocalStorage } from "../helpers/utilize.js";
+export { saveToLocalStorage } from "../helpers/utilize.js";
