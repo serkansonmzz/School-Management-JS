@@ -33,23 +33,35 @@ function handleClassesLinkClick(event) {
 function initializeApp() {
   document.addEventListener("DOMContentLoaded", () => {
     const appRoot = document.querySelector("#app");
+
+    if (!appRoot) {
+      console.error("App root not found");
+      return;
+    }
+
     appRoot.innerHTML = renderNavbar() + renderDashboard() + renderFooter();
 
-    //! management of event related to navbar links
-    document
-      .getElementById("dashboardLink")
-      .addEventListener("click", handleDashboardLinkClick);
-    document
-      .getElementById("teachersLink")
-      .addEventListener("click", handleTeachersLinkClick);
-    document
-      .getElementById("studentsLink")
-      .addEventListener("click", handleStudentsLinkClick);
-    document
-      .getElementById("classesLink")
-      .addEventListener("click", handleClassesLinkClick);
+    navigationLinks();
+
+    initializeData();
   });
-  initializeData();
+}
+
+function navigationLinks() {
+  navigationLinkItem("dashboardLink", handleDashboardLinkClick);
+  navigationLinkItem("teachersLink", handleTeachersLinkClick);
+  navigationLinkItem("studentsLink", handleStudentsLinkClick);
+  navigationLinkItem("classesLink", handleClassesLinkClick);
+}
+
+function navigationLinkItem(linkName, handler) {
+  const linkElement = document.getElementById(linkName);
+  if (linkElement) {
+    linkElement.removeEventListener("click", handler);
+    linkElement.addEventListener("click", handler);
+  } else {
+    console.error(`Link element with id ${linkName} not found`);
+  }
 }
 
 initializeApp();
