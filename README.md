@@ -23,26 +23,31 @@ SMS/
 ├── css/ # Main stylesheet
 │   └── styles.css
 ├── img/ # Image files
-├── js/
+├── src/
 │   ├── components/
-│   │   ├── modals/ # Modal components
+│   │   ├── modals/
 │   │   │   ├── renderClassModal.js
 │   │   │   ├── renderStudentModal.js
 │   │   │   └── renderTeacherModal.js
+│   ├── pages/
 │   │   ├── teacher.js
 │   │   ├── student.js
 │   │   ├── class.js
 │   │   ├── dashboard.js
 │   │   ├── navbar.js
 │   │   └── footer.js
-│   ├── data/
-│   │   ├── data.js # Data management
-│   │   └── initData.js # Initial data setup function
-│   ├── helpers/ # Helper functions
+│   ├── services/
+│   │   ├── studentService.js
+│   │   ├── teacherService.js
+│   │   ├── classService.js
+│   │   └── data/
+│   │       ├── data.js
+│   │       └── initData.js
+│   ├── helpers/
 │   │   └── utilize.js
-│   └── app.js # Core JavaScript file
-└── index.html # Main entry point
-└── README.md # Documentation
+│   └── app.js
+└── index.html
+└── README.md
 
 ```
 
