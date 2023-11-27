@@ -9,6 +9,34 @@ import {
   initializeData,
 } from "./pages/index.js";
 
+function refreshStudentSection() {
+  const contentElement = document.querySelector("#content");
+  if (contentElement) {
+    contentElement.innerHTML = renderStudentSection();
+    addEventListenersToStudentSection();
+  } else {
+    console.error("Content element not found");
+  }
+}
+function refreshTeacherSection() {
+  const contentElement = document.querySelector("#content");
+  if (contentElement) {
+    contentElement.innerHTML = renderTeacherSection();
+    addEventListenersToTeacherSection();
+  } else {
+    console.error("Content element not found");
+  }
+}
+function refreshClassSection() {
+  const contentElement = document.querySelector("#content");
+  if (contentElement) {
+    contentElement.innerHTML = renderClassSection();
+    addEventListenersToClassSection();
+  } else {
+    console.error("Content element not found");
+  }
+}
+
 function handleDashboardLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderDashboard();
