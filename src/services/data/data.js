@@ -7,7 +7,7 @@ const schoolData = [
     description:
       "Seasoned AWS guru, blending in-depth cloud knowledge with hands-on learning experiences.",
     img: "",
-    classes: [108, 102],
+    classId: 107,
   },
   {
     type: "teacher",
@@ -17,7 +17,7 @@ const schoolData = [
     description:
       "Dynamic Javascript mentor, famous for transforming complex concepts into engaging, easy-to-understand lessons",
     img: "",
-    classes: [103, 105],
+    classId: 103,
   },
   {
     type: "teacher",
@@ -27,7 +27,7 @@ const schoolData = [
     description:
       "Cybersecurity wizard, adept at imparting the importance of digital security and the latest trends in cyber defense",
     img: "",
-    classes: [105],
+    classId: 102,
   },
   {
     type: "teacher",
@@ -37,7 +37,7 @@ const schoolData = [
     description:
       "Veteran Full Stack developer and educator, known for integrating cutting-edge web technologies into comprehensive learning experiences",
     img: "",
-    classes: [103],
+    classId: 103,
   },
   {
     type: "teacher",
@@ -47,7 +47,7 @@ const schoolData = [
     description:
       "AI enthusiast, celebrated for her ability to demystify machine learning and AI concepts, making them accessible to all students",
     img: "",
-    classes: [108],
+    classId: 108,
   },
   {
     type: "teacher",
@@ -57,7 +57,7 @@ const schoolData = [
     description:
       "Expert in mobile application development, focusing on both Android and iOS platforms, blending creativity with technical prowess.",
     img: "",
-    classes: [104],
+    classId: 105,
   },
 
   {
@@ -65,60 +65,66 @@ const schoolData = [
     id: 1,
     title: "Full Stack Participant",
     name: "Alex Johnson",
+    grades: [78, 81, 70],
     description:
       "Keen on mastering full stack development, with a strong focus on modern web technologies.",
     img: "",
-    classId: 101,
+    classes: [101, 102, 103],
   },
   {
     type: "student",
     id: 2,
     title: "Mobile Novice",
     name: "Mia Thompson",
+    grades: [90, 60, 80],
     description:
       "Eager to dive into Mobile development, exploring both İOS and Android structures.",
     img: "",
-    classId: 104,
+    classes: [101, 102, 103],
   },
   {
     type: "student",
     id: 3,
     title: "Javascript Enthusiast",
     name: "Ryan Patel",
+    grades: [58, 70, 90],
     description:
       "Passionate about learning Javascript, focusing on interactive web application development.",
     img: "",
-    classId: 103,
+    classes: [102, 103],
   },
   {
     type: "student",
     id: 4,
     title: "Cybersecurity Beginner",
     name: "Emily Wong",
+    grades: [78, 81, 86],
     description:
       "Intrigued by the world of cybersecurity, keen to understand digital protection strategies.",
     img: "",
-    classId: 107,
+    classes: [108],
   },
   {
     type: "student",
     id: 5,
     title: "Javascript Learner",
     name: "Liam Garcia",
+    grades: [90, 85, 93],
     description:
       "Dedicated to mastering Javascript, with a special interest in front-end frameworks.",
     img: "",
-    classId: 105,
+    classes: [101, 102],
   },
   {
     type: "student",
     id: 6,
     title: "AI Explorer",
     name: "Olivia Brown",
+    grades: [88, 92, 76],
     description:
       "Fascinated by artificial intelligence, eager to learn about machine learning algorithms.",
     img: "",
-    classId: 106,
+    classes: [101, 102, 104],
   },
 
   {
