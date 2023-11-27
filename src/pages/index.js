@@ -10,5 +10,6 @@ export { renderTeacherModal } from "../components/modals/renderTeacherModal.js";
 export { renderStudentModal } from "../components/modals/renderStudentModal.js";
 export { renderClassModal } from "../components/modals/renderClassModal.js";
 export { manageShowModal } from "../helpers/utilize.js";
+export { exposeModal } from "../helpers/utilize.js";
 export { getFromLocalStorage } from "../helpers/utilize.js";
 export { saveToLocalStorage } from "../helpers/utilize.js";

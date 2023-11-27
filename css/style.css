@@ -21,19 +21,19 @@ i {
   cursor: pointer;
 }
 .addIcon{
-    font-size: 70px;
-    font-weight:700;
-    text-align: center;
-    justify-content: center;
-    color: rgb(100, 100, 227);
-    cursor: pointer;
-  }
-  .container-fluid a {
-    margin-left: 15px;
-  }
-  
-  .loginBtn {
-    font-size: 50px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
+  font-size: 70px;
+  font-weight:700;
+  text-align: center;
+  justify-content: center;
+  color: rgb(100, 100, 227);
+  cursor: pointer;
+}
+.container-fluid a {
+  margin-left: 15px;
+}
+
+.loginBtn {
+  font-size: 50px;
+  cursor: pointer;
+  margin-right: 10px;
+}

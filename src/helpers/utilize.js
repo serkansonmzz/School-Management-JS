@@ -35,4 +35,24 @@ const manageShowModal = (modalHtml) => {
   }
 };
 
-export { makeActive, getFromLocalStorage, saveToLocalStorage, manageShowModal };
+const exposeModal = () => {
+  const createdModal = document.querySelector("#formArea");
+  if (!createdModal) return;
+
+  const modalInstance = bootstrap.Modal.getInstance(createdModal);
+  if (modalInstance) {
+    modalInstance.hide();
+  }
+
+  createdModal.addEventListener("hidden.bs.modal", () => {
+    createdModal.remove();
+  });
+};
+
+export {
+  makeActive,
+  getFromLocalStorage,
+  saveToLocalStorage,
+  manageShowModal,
+  exposeModal,
+};
