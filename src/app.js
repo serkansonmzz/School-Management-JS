@@ -7,7 +7,7 @@ import {
   renderFooter,
   makeActive,
   initializeData,
-} from "./components/index.js";
+} from "./pages/index.js";
 
 function handleDashboardLinkClick(event) {
   const contentElement = document.querySelector("#content");
