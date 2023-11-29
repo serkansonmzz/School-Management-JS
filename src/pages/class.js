@@ -1,7 +1,11 @@
+import { getClasses, getTeacherForClass } from "../services/classService.js";
+
 const renderClassSection = () => {
+  const classData = getClasses();
+
   const classSection = `<div class="container">
       <div class="row my-3">
-        <div class="col-md-6">
+        <div class="col-md-4 mb-3">
           <div class="card shadow h-100 px-3">
             <div class="card-body">
               <div class="d-flex justify-content-end mb-2">
@@ -10,24 +14,6 @@ const renderClassSection = () => {
               </div>
               <h5 class="card-title">Fullstack Class</h5>
               <h6 class="card-subtitle mb-2 text-muted">Hannes Bühler</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Students</a>
-              <a href="#" class="card-link">Teachers</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card shadow h-100 px-3">
-            <div class="card-body">
-              <div class="d-flex justify-content-end mb-2">
-                <i class="bi bi-pencil-square mr-2 editClassButton"></i>
-                <i class="bi bi-dash-circle deleteClassButton"></i>
-              </div>
-              <h5 class="card-title">Cloud Class</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Ali Sayar</h6>
               <p class="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
