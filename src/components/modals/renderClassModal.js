@@ -5,8 +5,10 @@ import {
   updateClass,
 } from "../../services/classService.js";
 
+let isEdit;
+
 export const renderClassModal = (itemId = null) => {
-  const isEdit = itemId != null;
+  isEdit = itemId != null;
   const modalTitle = isEdit ? "Edit Class" : "Add new Class";
   const classData = isEdit ? getClassById(classId) : {};
 
@@ -28,6 +30,9 @@ export const renderClassModal = (itemId = null) => {
     }
   });
 };
+
+let allStudentData = getStudents();
+let allTeacherData = getTeachers();
 
 const createClassModalHtml = (modalTitle, classData) => {
   return `
@@ -62,29 +67,44 @@ const createClassModalHtml = (modalTitle, classData) => {
           <div class="inputField">
             <div>
               <label for="name">Name:</label>
-              <input type="text" name="name" id="name" required />
-            </div>
-            <div>
-              <label for="title">Title:</label>
-              <input type="text" name="title" id="title" required />
+              <input type="text" name="name" id="name" value="${
+                classData.name || ""
+              }"  />
             </div>
             <div>
               <label for="description">Desc:</label>
-              <input type="text" name="description" id="description" />
+              <input type="text" name="description" id="description"  value="${
+                classData.description || ""
+              }"  />
             </div>
             <div>
-            <label for="students">Students</label>
-              <select multiple name="students" class="form-control" id="students">
-                  <option value="">Select Option</option>
-                  <option value="1">
-                    Alex Johnson
-                  </option>
-                  <option value="2">
-                    Mia Thompson
-                  </option>
-                  <option value="3">
-                    Ryan Patel
-                  </option>
+              <label for="students">Students</label>
+                <select multiple name="students" class="form-control" id="students">
+                    <option value="">Multiple Selection</option>
+                    ${allStudentData
+                      .map((student) => {
+                        const isSelected =
+                          isEdit && classData.students.includes(student.id);
+                        return `<option value="${student.id}" ${
+                          isSelected ? "selected" : ""
+                        }>${student.name}</option> `;
+                      })
+                      .join("")}
+                </select>
+            </div>
+            <div>
+              <label for="students">Teacher</label>
+              <select name="teacherId" class="form-control" id="teacherId">
+                <option value="">multiple selections available</option>
+                ${allTeacherData
+                  .map((teacher) => {
+                    const isSelected =
+                      isEdit && classData.teacherId === teacher.id;
+                    return `<option value="${teacher.id}" ${
+                      isSelected ? "selected" : ""
+                    }>${teacher.name}</option> `;
+                  })
+                  .join("")}
               </select>
             </div>
           </div>
