@@ -40,3 +40,5 @@ const deleteClass = (classId) => {
   );
   saveToLocalStorage("schoolData", schoolData);
 };
+
+export { getClasses, getClassById, saveClass, updateClass, deleteClass };
