@@ -11,6 +11,13 @@ const getClassById = (classId) => {
     (item) => item.type === "class" && item.id === Number(classId)
   );
 };
+const getTeacherForClass = (teacherId) => {
+  const schoolData = getFromLocalStorage("schoolData") || [];
+  const teacherInfo = schoolData.find(
+    (item) => item.type === "teacher" && item.id === Number(teacherId)
+  );
+  return teacherInfo;
+};
 
 const saveClass = (classInfo) => {
   const schoolData = getFromLocalStorage("schoolData") || [];
@@ -41,4 +48,11 @@ const deleteClass = (classId) => {
   saveToLocalStorage("schoolData", schoolData);
 };
 
-export { getClasses, getClassById, saveClass, updateClass, deleteClass };
+export {
+  getClasses,
+  getClassById,
+  saveClass,
+  updateClass,
+  deleteClass,
+  getTeacherForClass,
+};
