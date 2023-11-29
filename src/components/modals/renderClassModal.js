@@ -1,13 +1,32 @@
 import { manageShowModal } from "../index.js";
+import {
+  getClassById,
+  saveClass,
+  updateClass,
+} from "../../services/classService.js";
 
 export const renderClassModal = (itemId = null) => {
   const isEdit = itemId != null;
   const modalTitle = isEdit ? "Edit Class" : "Add new Class";
-  const classData = {}; // check isEdit ? .. // class edit business logic will come
+  const classData = isEdit ? getClassById(classId) : {};
+
+  if (!classData && isEdit) {
+    console.error("Class data not found");
+    alert("Class not found.");
+    return;
+  }
 
   const modalHtml = createClassModalHtml(modalTitle, classData);
 
   manageShowModal(modalHtml);
+
+  //!Class form submit EventListener
+  const modalElement = document.querySelector("#formArea");
+  modalElement.addEventListener("submit", (event) => {
+    if (event.target && event.target.id === "classForm") {
+      event.preventDefault();
+    }
+  });
 };
 
 const createClassModalHtml = (modalTitle, classData) => {
@@ -26,7 +45,7 @@ const createClassModalHtml = (modalTitle, classData) => {
         ></button>
       </div>
       <div class="modal-body">
-        <form action="#" id="myForm">
+        <form action="#" id="classForm">
           <div class="card imgholder">
             <label for="img" class="upload">
               <input type="file" name="img" id="img" />
