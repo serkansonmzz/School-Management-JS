@@ -7,7 +7,7 @@ import {
 
 let isEdit;
 
-export const renderClassModal = (itemId = null) => {
+export const renderClassModal = (itemId = null, refreshClassSection = null) => {
   isEdit = itemId != null;
   const modalTitle = isEdit ? "Edit Class" : "Add new Class";
   const classData = isEdit ? getClassById(classId) : {};
@@ -48,6 +48,7 @@ export const renderClassModal = (itemId = null) => {
           alert(`Class successfully ${isEdit ? "updated" : "added"}!`);
           exposeModal();
           //! needed refresh content
+          refreshClassSection();
         } catch (error) {
           console.error("An error occurred:", error);
           alert(`Error: ${error.message || "Unknown error occurred."}`);
