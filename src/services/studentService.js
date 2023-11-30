@@ -26,6 +26,16 @@ const getClassesForStudent = (studentId) => {
 
   return findedStudentClasses;
 };
+const getStudentAverageGrade = (studentId) => {
+  const studentInfo = getStudentById(studentId);
+  if (studentInfo && studentInfo.grades) {
+    const total = studentInfo.grades.reduce((acc, grade) => acc + grade, 0);
+    const average = total / studentInfo.grades.length;
+    return average;
+  } else {
+    return "No students or grades found";
+  }
+};
 
 const saveStudent = (student) => {
   const schoolData = getFromLocalStorage("schoolData") || [];
@@ -64,4 +74,5 @@ export {
   updateStudent,
   deleteStudent,
   getClassesForStudent,
+  getStudentAverageGrade,
 };
