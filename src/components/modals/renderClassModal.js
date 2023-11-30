@@ -59,6 +59,18 @@ export const renderClassModal = (itemId = null) => {
   });
 };
 
+const validateClassData = (data) => {
+  const errors = {};
+  if (!data.name.trim()) errors.name = "Name is required";
+  if (data.name.length < 3) errors.name = "Name must be at least 3 characters";
+  if (!data.description.trim()) errors.description = "Description is required";
+  if (data.students.length === 0)
+    errors.students = "At least one student must be selected";
+  if (!data.teacherId) errors.teacherId = "Teacher must be selected";
+
+  return errors;
+};
+
 const createClassModalHtml = (modalTitle, classData) => {
   let allStudentData = getStudents();
   let allTeacherData = getTeachers();
