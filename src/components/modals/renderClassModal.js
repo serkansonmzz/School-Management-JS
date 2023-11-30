@@ -1,4 +1,4 @@
-import { manageShowModal } from "../index.js";
+import { manageShowModal, exposeModal } from "../../pages/index.js";
 import {
   getClassById,
   saveClass,
@@ -24,17 +24,45 @@ export const renderClassModal = (itemId = null) => {
 
   //!Class form submit EventListener
   const modalElement = document.querySelector("#formArea");
+
   modalElement.addEventListener("submit", (event) => {
     if (event.target && event.target.id === "classForm") {
       event.preventDefault();
+
+      const formData = new FormData(event.target);
+
+      classInfoForm = {
+        name: formData.get("name"),
+        description: formData.get("description"),
+        students: formData.getAll("students"),
+        teacherId: formData.get("teacherId"),
+      };
+
+      const errors = validateClassData(classInfoForm);
+
+      if (Object.keys(errors).length === 0) {
+        try {
+          isEdit
+            ? updateClass(classId, classInfoForm)
+            : saveClass(classInfoForm);
+          alert(`Class successfully ${isEdit ? "updated" : "added"}!`);
+          exposeModal();
+          //! needed refresh content
+        } catch (error) {
+          console.error("An error occurred:", error);
+          alert(`Error: ${error.message || "Unknown error occurred."}`);
+        }
+      } else {
+        alert("Validations Errors : " + Object.values(errors).join(""));
+      }
     }
   });
 };
 
-let allStudentData = getStudents();
-let allTeacherData = getTeachers();
-
 const createClassModalHtml = (modalTitle, classData) => {
+  let allStudentData = getStudents();
+  let allTeacherData = getTeachers();
+
   return `
   <!-- Class modalı için HTML içeriği -->
   <div class="modal fade" id="formArea">
