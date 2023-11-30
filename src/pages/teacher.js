@@ -1,45 +1,34 @@
+import { getTeachers } from "../pages/index.js";
+
 const renderTeacherSection = () => {
+  const teacherData = getTeachers();
+
   const teacherSection = `
     <div id="content">
       <div class="container">
       <div class="row my-3">
-        <div class="col-md-6">
-          <div class="card shadow h-100 px-3">
-            <div class="card-body">
-              <div class="d-flex justify-content-end mb-2">
-                <i data-id="" class="bi bi-pencil-square mr-2 editTeacherButton"></i>
-                <i data-id="" class="bi bi-dash-circle mr-2 deleteTeacherButton"></i>
+      ${teacherData
+        .map(
+          (teacher) =>
+            `<div class="col-md-4 mb-3">
+              <div class="card shadow h-100 px-3">
+                <div class="card-body">
+                  <div class="d-flex justify-content-end mb-2">
+                    <i data-id="${teacher.id}" class="bi bi-pencil-square mr-2 editTeacherButton"></i>
+                    <i data-id="${teacher.id}" class="bi bi-dash-circle mr-2 deleteTeacherButton"></i>
+                  </div>
+                  <h5 class="card-title">${teacher.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${teacher.title}</h6>
+                    <p class="card-text">
+                      ${teacher.description}
+                    </p>
+                    <a href="#" class="card-link">Students</a>
+                    <a href="#" class="card-link">Classes</a>
+                </div>
               </div>
-              <h5 class="card-title">Hannes Bühler</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Javascript Expert</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Students</a>
-              <a href="#" class="card-link">Classes</a>
-            </div>
-          </div>
-        </div>
-        <!-- Teacher Card -->
-        <div class="col-md-6">
-          <div class="card shadow h-100 px-3">
-            <div class="card-body">
-              <div class="d-flex justify-content-end mb-2">
-                <i class="bi bi-pencil-square mr-2 editTeacherButton"></i>
-                <i class="bi bi-dash-circle deleteTeacherButton"></i>
-              </div>
-              <h5 class="card-title">Ali Sayar</h5>
-              <h6 class="card-subtitle mb-2 text-muted">AWS Expert</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Students</a>
-              <a href="#" class="card-link">Classes</a>
-            </div>
-          </div>
-        </div>
+           </div>`
+        )
+        .join("")}
       </div>
     </div>
     </div>

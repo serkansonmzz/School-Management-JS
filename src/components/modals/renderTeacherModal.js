@@ -18,7 +18,6 @@ export const renderTeacherModal = (
 
   if (!teacherData && isEdit) {
     console.error("Teacher data not found");
-    b;
     alert("Teacher not found.");
     return;
   }

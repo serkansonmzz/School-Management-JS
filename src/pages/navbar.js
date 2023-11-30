@@ -6,7 +6,7 @@ const renderNavbar = () => {
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active"  id="dasboardLink" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" id="dashboardLink" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" id="classesLink" href="#">Classes</a>
