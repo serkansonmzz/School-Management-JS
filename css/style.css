@@ -11,6 +11,10 @@ body {
 }
 a {
   text-decoration: none;
+  color: #6464e3;
+}
+a:hover {
+  color: #4b4bd1; 
 }
 ul li {
   list-style-type: none;
@@ -28,12 +32,159 @@ i {
   color: rgb(100, 100, 227);
   cursor: pointer;
 }
-.container-fluid a {
-  margin-left: 15px;
-}
 
 .loginBtn {
   font-size: 50px;
   cursor: pointer;
   margin-right: 10px;
+}
+
+.card {
+  border-radius: 5px;
+}
+
+
+/* Set the base style of links */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  padding-bottom: 5px; 
+}
+
+
+/* spacing for an underlined linkClick to apply */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px; 
+  background-color: #6464e3; 
+  transition: width 0.3s ease; 
+}
+.nav-link.active::after {
+  width: 100%; /* Full width, so that the bottom line is visible */
+}
+
+.navbar-nav .nav-item{
+  margin-left: 15px;
+}
+
+/*media*/
+@media (max-width: 992px) { 
+  .navbar .container-fluid {
+      justify-content: start;
+  }
+
+  .navbar-toggler {
+      margin-right: auto;
+  }
+}
+
+@media (max-width: 375px) {
+  .card {
+      margin-bottom: 15px; 
+  }
+}
+/* modal Area */
+.modal-header{
+  background: #6464E3;
+  color: #fff;
+}
+
+.modal-body form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.modal-body form .imgholder{
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.imgholder .upload{
+  position: absolute;
+  bottom: 0;
+  left: 10;
+  width: 100%;
+  height: 100px;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload i{
+  color: #fff;
+  font-size: 35px;
+}
+
+.imgholder:hover .upload{
+  display: flex;
+}
+
+.imgholder .upload input{
+  display: none;
+}
+
+.modal-body form .inputField{
+  flex-basis: 68%;
+  border-left: 5px groove #6464E3;
+  padding-left: 20px;
+}
+
+form .inputField > div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+form .inputField > div label{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#formArea form .inputField > div label::after{
+  content: "*";
+  color: red;
+}
+
+form .inputField > div input{
+  width: 75%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid #6464E3;
+}
+
+
+.modal-body form .inputField select {
+  border-radius: 5px;
+}
+.modal-body form .inputField > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-body form .inputField select {
+  width: 100%; 
+  margin: 5px 0; 
+  margin-left: 33px;
+  padding: 10px; 
+  border: none;
+  border-bottom: 2px solid #6464E3;
 }
