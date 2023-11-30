@@ -1,11 +1,12 @@
-import { manageShowModal, exposeModal } from "../../pages/index.js";
 import {
+  manageShowModal,
+  exposeModal,
   getClassById,
   saveClass,
   updateClass,
-} from "../../services/classService.js";
-import { getStudents } from "../../services/studentService.js";
-import { getTeachers } from "../../services/teacherService.js";
+  getStudents,
+  getTeachers,
+} from "../../pages/index.js";
 
 let isEdit;
 

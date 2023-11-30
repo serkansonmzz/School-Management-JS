@@ -7,8 +7,8 @@ import {
   renderFooter,
   makeActive,
   initializeData,
+  deleteClass,
 } from "./pages/index.js";
-import { deleteClass } from "./services/classService.js";
 
 function refreshStudentSection() {
   const contentElement = document.querySelector("#content");
