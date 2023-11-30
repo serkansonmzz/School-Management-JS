@@ -8,6 +8,7 @@ import {
   makeActive,
   initializeData,
 } from "./pages/index.js";
+import { deleteClass } from "./services/classService.js";
 
 function refreshStudentSection() {
   const contentElement = document.querySelector("#content");
@@ -56,6 +57,37 @@ function handleClassesLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderClassSection();
   makeActive(event);
+}
+
+function handleAddClassClick() {
+  renderClassModal(null, refreshClassSection);
+}
+function handleEditClass(itemId) {
+  renderClassModal(itemId, refreshClassSection);
+}
+function handleDeleteClass(itemId) {
+  const deleteRequest = confirm("Are you sure you want to delete");
+  if (deleteRequest) {
+    deleteClass(itemId);
+  }
+  refreshClassSection();
+}
+
+function addEventListenersToClassSection() {
+  const addClassButton = document.querySelector("#addClassButton");
+  addClassButton.addEventListener("click", handleAddClassClick);
+
+  const editClassButtons = document.querySelectorAll(".editClassButton");
+  editClassButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () => handleEditClass(itemId));
+  });
+
+  const deleteClassButtons = document.querySelectorAll(".deleteClassButton");
+  deleteClassButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () => handleDeleteClass(itemId));
+  });
 }
 
 function initializeApp() {
