@@ -13,6 +13,7 @@ import {
   renderClassModal,
   deleteClass,
   deleteTeacher,
+  deleteStudent,
 } from "./pages/index.js";
 
 function refreshStudentSection() {
@@ -96,12 +97,12 @@ function handleAddStudentClick() {
 function handleEditStudent(itemId) {
   renderStudentModal(itemId, refreshStudentSection);
 }
-function handleDeleteTeacher(itemId) {
+function handleDeleteStudent(itemId) {
   const deleteRequest = confirm("Are you sure you want to delete");
   if (deleteRequest) {
-    deleteTeacher(itemId);
+    deleteStudent(itemId);
   }
-  refreshTeacherSection();
+  refreshStudentSection();
 }
 function addEventListenersToClassSection() {
   const addClassButton = document.querySelector("#addClassButton");
