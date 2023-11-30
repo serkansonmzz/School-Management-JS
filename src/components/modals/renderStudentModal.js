@@ -1,4 +1,4 @@
-import { manageShowModal } from "../index.js";
+import { manageShowModal } from "../../pages/index.js";
 
 export const renderStudentModal = (studentId = null) => {
   const isEdit = studentId !== null;
@@ -27,7 +27,7 @@ const createStudentModalHtml = (modalTitle, studentData) => {
           ></button>
         </div>
         <div class="modal-body">
-          <form action="#" id="myForm">
+          <form action="#" id="studentForm">
             <div class="card imgholder">
               <label for="img" class="upload">
                 <input type="file" name="img" id="img" />
@@ -44,11 +44,11 @@ const createStudentModalHtml = (modalTitle, studentData) => {
             <div class="inputField">
               <div>
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" required />
+                <input type="text" name="name" id="name"  />
               </div>
               <div>
                 <label for="title">Title:</label>
-                <input type="text" name="title" id="title" required />
+                <input type="text" name="title" id="title"  />
               </div>
               <div>
                 <label for="description">Desc:</label>
@@ -81,7 +81,7 @@ const createStudentModalHtml = (modalTitle, studentData) => {
           >
             Close
           </button>
-          <button type="submit" form="myForm" class="btn btn-primary submit">
+          <button type="submit" form="studentForm" class="btn btn-primary submit">
             Submit
           </button>
         </div>

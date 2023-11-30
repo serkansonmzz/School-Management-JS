@@ -139,7 +139,7 @@ const createClassModalHtml = (modalTitle, classData) => {
             <div>
               <label for="students">Teacher</label>
               <select name="teacherId" class="form-control" id="teacherId">
-                <option value="">multiple selections available</option>
+                <option value="">Select One</option>
                 ${allTeacherData
                   .map((teacher) => {
                     const isSelected =
@@ -163,7 +163,7 @@ const createClassModalHtml = (modalTitle, classData) => {
         >
           Close
         </button>
-        <button type="submit" form="myForm" class="btn btn-primary submit">
+        <button type="submit" form="classForm" class="btn btn-primary submit">
           Submit
         </button>
       </div>

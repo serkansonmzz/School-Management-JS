@@ -11,7 +11,6 @@ import {
   renderStudentModal,
   renderTeacherModal,
   renderClassModal,
-  deleteClass,
   deleteTeacher,
   deleteStudent,
 } from "./pages/index.js";
