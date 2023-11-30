@@ -13,8 +13,23 @@ export { manageShowModal } from "../helpers/utilize.js";
 export { exposeModal } from "../helpers/utilize.js";
 export { getFromLocalStorage } from "../helpers/utilize.js";
 export { saveToLocalStorage } from "../helpers/utilize.js";
-export { getStudents } from "../services/studentService.js";
-export { getTeachers } from "../services/teacherService.js";
+export {
+  getStudents,
+  getStudentById,
+  saveStudent,
+  updateStudent,
+  deleteStudent,
+  getClassesForStudent,
+  getStudentAverageGrade,
+} from "../services/studentService.js";
+export {
+  getTeachers,
+  getTeacherById,
+  saveTeacher,
+  updateTeacher,
+  deleteTeacher,
+  getClassesForTeacher,
+} from "../services/teacherService.js";
 export {
   getClasses,
   getClassById,
