@@ -7,7 +7,8 @@ const schoolData = [
     description:
       "Seasoned AWS guru, blending in-depth cloud knowledge with hands-on learning experiences.",
     img: "",
-    classId: 107,
+    classes: [108, 102],
+    students: [2, 4, 6, 1],
   },
   {
     type: "teacher",
@@ -17,7 +18,8 @@ const schoolData = [
     description:
       "Dynamic Javascript mentor, famous for transforming complex concepts into engaging, easy-to-understand lessons",
     img: "",
-    classId: 103,
+    classes: [108, 104],
+    students: [1, 3, 6],
   },
   {
     type: "teacher",
@@ -27,7 +29,8 @@ const schoolData = [
     description:
       "Cybersecurity wizard, adept at imparting the importance of digital security and the latest trends in cyber defense",
     img: "",
-    classId: 102,
+    classes: [104, 105],
+    students: [2, 4, 6, 1],
   },
   {
     type: "teacher",
@@ -37,7 +40,8 @@ const schoolData = [
     description:
       "Veteran Full Stack developer and educator, known for integrating cutting-edge web technologies into comprehensive learning experiences",
     img: "",
-    classId: 103,
+    classes: [108],
+    students: [1, 2, 3, 4, 5, 6],
   },
   {
     type: "teacher",
@@ -47,7 +51,8 @@ const schoolData = [
     description:
       "AI enthusiast, celebrated for her ability to demystify machine learning and AI concepts, making them accessible to all students",
     img: "",
-    classId: 108,
+    classes: [105, 104],
+    students: [4, 6, 2],
   },
   {
     type: "teacher",
@@ -57,7 +62,8 @@ const schoolData = [
     description:
       "Expert in mobile application development, focusing on both Android and iOS platforms, blending creativity with technical prowess.",
     img: "",
-    classId: 105,
+    classes: [103, 108],
+    students: [5, 6, 4],
   },
 
   {
@@ -132,8 +138,8 @@ const schoolData = [
     id: 107,
     name: "Cybersecurity Fundamentals",
     description: "",
-    teacherId: 1,
-    students: [4],
+    teachers: [1, 2],
+    students: [4, 5, 6],
   },
   {
     type: "class",
@@ -141,8 +147,8 @@ const schoolData = [
     name: "Data Science Essentials",
     description:
       "Introductory course in data science, covering key concepts and hands-on experience with data tools",
-    teacherId: 1,
-    students: [3],
+    teachers: [4, 5],
+    students: [3, 2, 4],
   },
   {
     type: "class",
@@ -150,7 +156,7 @@ const schoolData = [
     name: "Fundamentals of Programming",
     description:
       "Diverse programming languages overview, focusing on core principles and modern development practices",
-    teacherId: 2,
+    teachers: [5, 6],
     students: [4, 5, 1],
   },
   {
@@ -158,7 +164,7 @@ const schoolData = [
     id: 104,
     name: "Mobile Technologies",
     description: "",
-    teacherId: 2,
+    teachers: [3, 5],
     students: [5, 2],
   },
   {
@@ -167,7 +173,7 @@ const schoolData = [
     name: "Javascript Deep Dive",
     description:
       "In-depth exploration of Javascript, from basics to advanced techniques, tailored for aspiring developers",
-    teacherId: 3,
+    teachers: [3, 5],
     students: [2, 3, 5],
   },
   {
@@ -176,8 +182,8 @@ const schoolData = [
     name: "Advanced Cloud Technologies",
     description:
       "Deep dive into cutting-edge cloud technologies, preparing students for advanced cloud-based solutions.",
-    teacherId: 1,
-    students: [1],
+    teachers: [1, 2],
+    students: [1, 2, 3, 4],
   },
 ];
 
