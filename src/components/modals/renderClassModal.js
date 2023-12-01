@@ -38,7 +38,7 @@ export const renderClassModal = (itemId = null, refreshClassSection = null) => {
         name: formData.get("name"),
         description: formData.get("description"),
         students: formData.getAll("students"),
-        teacherId: formData.get("teacherId"),
+        teachers: formData.getAll("teachers"),
       };
 
       const errors = validateClassData(classInfoForm);
@@ -57,7 +57,7 @@ export const renderClassModal = (itemId = null, refreshClassSection = null) => {
           alert(`Error: ${error.message || "Unknown error occurred."}`);
         }
       } else {
-        alert("Validations Errors : " + Object.values(errors).join(""));
+        alert("Validations Errors : " + Object.values(errors).join("\n"));
       }
     }
   });
@@ -70,7 +70,8 @@ const validateClassData = (data) => {
   if (!data.description.trim()) errors.description = "Description is required";
   if (data.students.length === 0)
     errors.students = "At least one student must be selected";
-  if (!data.teacherId) errors.teacherId = "Teacher must be selected";
+  if (data.teachers.length === 0)
+    errors.teachers = "At least one teacher must be selected";
 
   return errors;
 };
@@ -137,13 +138,13 @@ const createClassModalHtml = (modalTitle, classData) => {
                 </select>
             </div>
             <div>
-              <label for="students">Teacher</label>
-              <select name="teacherId" class="form-control" id="teacherId">
-                <option value="">Select One</option>
+              <label for="teachers">Teachers</label>
+              <select multiple name="teachers" class="form-control" id="teacherId">
+                <option value="">Select Multiple</option>
                 ${allTeacherData
                   .map((teacher) => {
                     const isSelected =
-                      isEdit && classData.teacherId === teacher.id;
+                      isEdit && classData.teachers.includes(teacher.id);
                     return `<option value="${teacher.id}" ${
                       isSelected ? "selected" : ""
                     }>${teacher.name}</option> `;
