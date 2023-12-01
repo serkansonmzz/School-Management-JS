@@ -28,9 +28,9 @@ const saveClass = (classInfo) => {
 const updateClass = (classId, updatedInfo) => {
   const schoolData = getFromLocalStorage("schoolData") || [];
 
-  if (updatedInfo.students) {
+  if (updatedInfo.students && updatedInfo.teachers) {
     updatedInfo.students = updatedInfo.students.map(Number);
-    updatedInfo.teacherId = Number(updatedInfo.teacherId);
+    updatedInfo.teachers = updatedInfo.teachers.map(Number);
   }
   schoolData = schoolData.map((item) => {
     if (item.type === "class" && item.id === Number(classId)) {
