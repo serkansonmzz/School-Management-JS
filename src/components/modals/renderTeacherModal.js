@@ -3,6 +3,7 @@ import {
   exposeModal,
   getClasses,
   getTeacherById,
+  getStudents,
   saveTeacher,
   updateTeacher,
 } from "../../pages/index.js";
@@ -32,13 +33,15 @@ export const renderTeacherModal = (
   modalElement.addEventListener("submit", (event) => {
     if (event.target && event.target.id === "teacherForm") {
       event.preventDefault();
+
       const formData = new FormData(event.target);
 
       const addedTeacher = {
         name: formData.get("name"),
         title: formData.get("title"),
         description: formData.get("description"),
-        classId: formData.get("classId"),
+        classes: formData.getAll("classes"),
+        students: formData.getAll("students"),
       };
 
       const errors = validateTeacherData(addedTeacher);
@@ -56,7 +59,7 @@ export const renderTeacherModal = (
           alert(`Error: ${error.message || "Unknown error occurred."}`);
         }
       } else {
-        alert("Validations Errors : " + Object.values(errors).join("-"));
+        alert("Validations Errors : " + Object.values(errors).join("\n"));
       }
     }
   });
@@ -68,13 +71,17 @@ const validateTeacherData = (data) => {
   if (data.name.length < 3) errors.name = "Name must be at least 3 characters";
   if (!data.description.trim()) errors.description = "Description is required";
   if (!data.title.trim()) errors.title = "Title is required";
-  if (!data.classId) errors.classId = "Class must be selected";
+  if (data.classes.length === 0)
+    errors.classes = "at least one class must be selected";
+  if (data.students.length === 0)
+    errors.students = "at least one student must be selected";
 
   return errors;
 };
 
 const createTeacherModalHtml = (modalTitle, teacherData) => {
   const allClassData = getClasses();
+  const allStudentData = getStudents();
   return `
   <div class="modal fade" id="formArea">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -122,21 +129,35 @@ const createTeacherModalHtml = (modalTitle, teacherData) => {
                 teacherData.description || ""
               }" />
             </div>
-
             <div>
-            <label for="classes">Classes</label>
-              <select name="classId" class="form-control" id="classId">
-                  <option value="">Select One</option>
-                ${allClassData
-                  .map((pclass) => {
-                    const isSelected =
-                      isEdit && teacherData.classId === pclass.id;
-                    return `<option value="${pclass.id}" ${
-                      isSelected ? "selected" : ""
-                    }>${pclass.name}</option> `;
-                  })
-                  .join("")}
-              </select>
+              <label for="classes">Classes</label>
+                <select multiple name="classes" class="form-control" id="classId">
+                    <option value="">Select Multiple</option>
+                  ${allClassData
+                    .map((pclass) => {
+                      const isSelected =
+                        isEdit && teacherData.classes.includes(pclass.id);
+                      return `<option value="${pclass.id}" ${
+                        isSelected ? "selected" : ""
+                      }>${pclass.name}</option> `;
+                    })
+                    .join("")}
+                </select>
+            </div>
+            <div>
+              <label for="classes">Students</label>
+                <select multiple name="students" class="form-control" id="classId">
+                    <option value="">Select Multiple</option>
+                  ${allStudentData
+                    .map((pstudent) => {
+                      const isSelected =
+                        isEdit && teacherData.students.includes(pstudent.id);
+                      return `<option value="${pstudent.id}" ${
+                        isSelected ? "selected" : ""
+                      }>${pstudent.name}</option> `;
+                    })
+                    .join("")}
+                </select>
             </div>
           </div>
         </form>
