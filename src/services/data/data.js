@@ -137,7 +137,8 @@ const schoolData = [
     type: "class",
     id: 107,
     name: "Cybersecurity Fundamentals",
-    description: "",
+    description:
+      "Introductory course in data science, covering key concepts and hands-on experience with data tools",
     teachers: [1, 2],
     students: [4, 5, 6],
   },
@@ -163,7 +164,8 @@ const schoolData = [
     type: "class",
     id: 104,
     name: "Mobile Technologies",
-    description: "",
+    description:
+      "Deep dive into cutting-edge cloud technologies, preparing students for advanced cloud-based solutions.",
     teachers: [3, 5],
     students: [5, 2],
   },
