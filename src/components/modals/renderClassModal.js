@@ -10,8 +10,11 @@ import {
 
 let isEdit;
 
-export const renderClassModal = (itemId = null, refreshClassSection = null) => {
-  isEdit = itemId != null;
+export const renderClassModal = (
+  classId = null,
+  refreshClassSection = null
+) => {
+  isEdit = classId != null;
   const modalTitle = isEdit ? "Edit Class" : "Add new Class";
   const classData = isEdit ? getClassById(classId) : {};
 
@@ -28,20 +31,28 @@ export const renderClassModal = (itemId = null, refreshClassSection = null) => {
   //!Class form submit EventListener
   const modalElement = document.querySelector("#formArea");
 
+  addEventListenerClassSubmit(modalElement, classId, refreshClassSection);
+};
+
+const addEventListenerClassSubmit = (
+  modalElement,
+  classId,
+  refreshClassSection
+) => {
   modalElement.addEventListener("submit", (event) => {
     if (event.target && event.target.id === "classForm") {
       event.preventDefault();
 
       const formData = new FormData(event.target);
 
-      classInfoForm = {
+      const classInfoForm = {
         name: formData.get("name"),
         description: formData.get("description"),
-        students: formData.getAll("students"),
-        teachers: formData.getAll("teachers"),
+        students: formData.getAll("students").map(Number),
+        teachers: formData.getAll("teachers").map(Number),
       };
 
-      const errors = validateClassData(classInfoForm);
+      let errors = validateClassData(classInfoForm);
 
       if (Object.keys(errors).length === 0) {
         try {
@@ -64,7 +75,7 @@ export const renderClassModal = (itemId = null, refreshClassSection = null) => {
 };
 
 const validateClassData = (data) => {
-  const errors = {};
+  let errors = {};
   if (!data.name.trim()) errors.name = "Name is required";
   if (data.name.length < 3) errors.name = "Name must be at least 3 characters";
   if (!data.description.trim()) errors.description = "Description is required";
@@ -74,6 +85,46 @@ const validateClassData = (data) => {
     errors.teachers = "At least one teacher must be selected";
 
   return errors;
+};
+
+const createStudentSelectHtml = (isEdit, classData, allStudentData) => {
+  const studentOptions = allStudentData
+    .map((pstudent) => {
+      const isSelected = isEdit && classData.students.includes(pstudent.id);
+      return `<option value="${pstudent.id}" ${isSelected ? "selected" : ""}>${
+        pstudent.name
+      }</option>`;
+    })
+    .join("");
+
+  return `
+  <div>
+    <label for="students">Students</label>
+      <select multiple name="students" class="form-control" id="students">
+        <option value="">Multiple Selection</option>
+        ${studentOptions}
+      </select>
+  </div>`;
+};
+const createTeacherSelectHtml = (isEdit, classData, allTeacherData) => {
+  const teacherOptions = allTeacherData
+    .map((pteacher) => {
+      const isSelected = isEdit && classData.teachers.includes(pteacher.id);
+      return `<option value="${pteacher.id}" ${isSelected ? "selected" : ""}>${
+        pteacher.name
+      }</option>`;
+    })
+    .join("");
+
+  return `
+    <div>
+      <label for="teachers">Teachers</label>
+      <select multiple name="teachers" class="form-control" id="teacherId">
+        <option value="">Select Multiple</option>
+        ${teacherOptions}
+      </select>
+    </div>
+  `;
 };
 
 const createClassModalHtml = (modalTitle, classData) => {
@@ -122,36 +173,8 @@ const createClassModalHtml = (modalTitle, classData) => {
                 classData.description || ""
               }"  />
             </div>
-            <div>
-              <label for="students">Students</label>
-                <select multiple name="students" class="form-control" id="students">
-                    <option value="">Multiple Selection</option>
-                    ${allStudentData
-                      .map((student) => {
-                        const isSelected =
-                          isEdit && classData.students.includes(student.id);
-                        return `<option value="${student.id}" ${
-                          isSelected ? "selected" : ""
-                        }>${student.name}</option> `;
-                      })
-                      .join("")}
-                </select>
-            </div>
-            <div>
-              <label for="teachers">Teachers</label>
-              <select multiple name="teachers" class="form-control" id="teacherId">
-                <option value="">Select Multiple</option>
-                ${allTeacherData
-                  .map((teacher) => {
-                    const isSelected =
-                      isEdit && classData.teachers.includes(teacher.id);
-                    return `<option value="${teacher.id}" ${
-                      isSelected ? "selected" : ""
-                    }>${teacher.name}</option> `;
-                  })
-                  .join("")}
-              </select>
-            </div>
+             ${createStudentSelectHtml(isEdit, classData, allStudentData)}
+             ${createTeacherSelectHtml(isEdit, classData, allTeacherData)}
           </div>
         </form>
       </div>

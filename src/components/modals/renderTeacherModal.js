@@ -29,7 +29,14 @@ export const renderTeacherModal = (
 
   //!Teacher Submit operations
   const modalElement = document.querySelector("#formArea");
+  addEventListenerTeacherSubmit(modalElement, teacherId, refreshTeacherSection);
+};
 
+const addEventListenerTeacherSubmit = (
+  modalElement,
+  teacherId,
+  refreshTeacherSection
+) => {
   modalElement.addEventListener("submit", (event) => {
     if (event.target && event.target.id === "teacherForm") {
       event.preventDefault();
@@ -40,11 +47,11 @@ export const renderTeacherModal = (
         name: formData.get("name"),
         title: formData.get("title"),
         description: formData.get("description"),
-        classes: formData.getAll("classes"),
-        students: formData.getAll("students"),
+        classes: formData.getAll("classes").map(Number),
+        students: formData.getAll("students").map(Number),
       };
 
-      const errors = validateTeacherData(addedTeacher);
+      let errors = validateTeacherData(addedTeacher);
 
       if (Object.keys(errors).length === 0) {
         try {
@@ -66,7 +73,7 @@ export const renderTeacherModal = (
 };
 
 const validateTeacherData = (data) => {
-  const errors = {};
+  let errors = {};
   if (!data.name.trim()) errors.name = "Name is required";
   if (data.name.length < 3) errors.name = "Name must be at least 3 characters";
   if (!data.description.trim()) errors.description = "Description is required";
@@ -77,6 +84,46 @@ const validateTeacherData = (data) => {
     errors.students = "at least one student must be selected";
 
   return errors;
+};
+
+const createClassSelectHtml = (isEdit, allClassData, teacherData) => {
+  const classOptions = allClassData
+    .map((pclass) => {
+      const isSelected = isEdit && teacherData.classes.includes(pclass.id);
+      return `<option value="${pclass.id}" ${isSelected ? "selected" : ""}>${
+        pclass.name
+      }</option> `;
+    })
+    .join("");
+
+  return `
+    <div>
+        <label for="classes">Classes</label>
+        <select multiple name="classes" class="form-control" id="classId">
+          <option value="">Select Multiple</option>
+          ${classOptions}
+        </select>
+    </div>`;
+};
+
+const createStudentSelectHtml = (isEdit, allStudentData, teacherData) => {
+  const studentOptions = allStudentData
+    .map((pstudent) => {
+      const isSelected = isEdit && teacherData.students.includes(pstudent.id);
+      return `<option value="${pstudent.id}" ${isSelected ? "selected" : ""}>${
+        pstudent.name
+      }</option> `;
+    })
+    .join("");
+
+  return `
+    <div>
+        <label for="students">Students</label>
+        <select multiple name="students" class="form-control" id="classId">
+          <option value="">Select Multiple</option>
+          ${studentOptions}
+        </select>
+    </div>`;
 };
 
 const createTeacherModalHtml = (modalTitle, teacherData) => {
@@ -129,36 +176,8 @@ const createTeacherModalHtml = (modalTitle, teacherData) => {
                 teacherData.description || ""
               }" />
             </div>
-            <div>
-              <label for="classes">Classes</label>
-                <select multiple name="classes" class="form-control" id="classId">
-                    <option value="">Select Multiple</option>
-                  ${allClassData
-                    .map((pclass) => {
-                      const isSelected =
-                        isEdit && teacherData.classes.includes(pclass.id);
-                      return `<option value="${pclass.id}" ${
-                        isSelected ? "selected" : ""
-                      }>${pclass.name}</option> `;
-                    })
-                    .join("")}
-                </select>
-            </div>
-            <div>
-              <label for="classes">Students</label>
-                <select multiple name="students" class="form-control" id="classId">
-                    <option value="">Select Multiple</option>
-                  ${allStudentData
-                    .map((pstudent) => {
-                      const isSelected =
-                        isEdit && teacherData.students.includes(pstudent.id);
-                      return `<option value="${pstudent.id}" ${
-                        isSelected ? "selected" : ""
-                      }>${pstudent.name}</option> `;
-                    })
-                    .join("")}
-                </select>
-            </div>
+            ${createClassSelectHtml(isEdit, allClassData, teacherData)}
+            ${createStudentSelectHtml(isEdit, allStudentData, teacherData)}
           </div>
         </form>
       </div>
