@@ -43,58 +43,58 @@ function refreshClassSection() {
   }
 }
 
-function handleDashboardLinkClick(event) {
-  const contentElement = document.querySelector("#content");
-  contentElement.innerHTML = renderDashboard();
-  makeActive(event);
-}
-function handleTeachersLinkClick(event) {
-  const contentElement = document.querySelector("#content");
-  contentElement.innerHTML = renderTeacherSection();
-  makeActive(event);
-}
-function handleStudentsLinkClick(event) {
-  const contentElement = document.querySelector("#content");
-  contentElement.innerHTML = renderStudentSection();
-  makeActive(event);
-}
-function handleClassesLinkClick(event) {
-  const contentElement = document.querySelector("#content");
-  contentElement.innerHTML = renderClassSection();
-  makeActive(event);
-}
-
-function handleAddClassClick() {
-  renderClassModal(null, refreshClassSection);
-}
-function handleEditClass(itemId) {
-  renderClassModal(itemId, refreshClassSection);
-}
-function handleDeleteClass(itemId) {
-  const deleteRequest = confirm("Are you sure you want to delete");
-  if (deleteRequest) {
-    deleteClass(itemId);
-  }
-  refreshClassSection();
-}
 function handleAddTeacherClick() {
   renderTeacherModal(null, refreshTeacherSection);
 }
 function handleEditTeacher(itemId) {
   renderTeacherModal(itemId, refreshTeacherSection);
 }
-function handleDeleteTeacher(itemId) {
-  const deleteRequest = confirm("Are you sure you want to delete");
-  if (deleteRequest) {
-    deleteTeacher(itemId);
-  }
-  refreshTeacherSection();
-}
 function handleAddStudentClick() {
   renderStudentModal(null, refreshStudentSection);
 }
 function handleEditStudent(itemId) {
   renderStudentModal(itemId, refreshStudentSection);
+}
+function handleAddClassClick() {
+  renderClassModal(null, refreshClassSection);
+}
+function handleEditClass(itemId) {
+  renderClassModal(itemId, refreshClassSection);
+}
+
+function handleDashboardLinkClick(event) {
+  const contentElement = document.querySelector("#content");
+  contentElement.innerHTML = renderDashboard();
+  makeActive(event);
+}
+
+function handleTeachersLinkClick(event) {
+  const contentElement = document.querySelector("#content");
+  contentElement.innerHTML = renderTeacherSection();
+  makeActive(event);
+  addEventListenersToTeacherSection();
+}
+
+function handleStudentsLinkClick(event) {
+  const contentElement = document.querySelector("#content");
+  contentElement.innerHTML = renderStudentSection();
+  makeActive(event);
+  addEventListenersToStudentSection();
+}
+
+function handleClassesLinkClick(event) {
+  const contentElement = document.querySelector("#content");
+  contentElement.innerHTML = renderClassSection();
+  makeActive(event);
+  addEventListenersToClassSection();
+}
+
+function handleDeleteClass(itemId) {
+  const deleteRequest = confirm("Are you sure you want to delete");
+  if (deleteRequest) {
+    deleteClass(itemId);
+  }
+  refreshClassSection();
 }
 function handleDeleteStudent(itemId) {
   const deleteRequest = confirm("Are you sure you want to delete");
@@ -103,6 +103,48 @@ function handleDeleteStudent(itemId) {
   }
   refreshStudentSection();
 }
+function handleDeleteTeacher(itemId) {
+  const deleteRequest = confirm("Are you sure you want to delete");
+  if (deleteRequest) {
+    deleteTeacher(itemId);
+  }
+  refreshTeacherSection();
+}
+
+function addEventListenersToTeacherSection() {
+  const addTeacherButton = document.querySelector("#addTeacherButton");
+  addTeacherButton.addEventListener("click", handleAddTeacherClick);
+  
+  const editTeacherButtons = document.querySelectorAll(".editTeacherButton");
+  editTeacherButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () => handleEditTeacher(itemId));
+  });
+  
+  const deleteTeacherButtons = document.querySelectorAll(".deleteTeacherButton");
+  deleteTeacherButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () => handleDeleteTeacher(itemId));
+  });
+}
+
+function addEventListenersToStudentSection() {
+  const addStudentButton = document.querySelector("#addStudentButton");
+  addStudentButton.addEventListener("click", handleAddStudentClick);
+
+  const editStudentButtons = document.querySelectorAll(".editStudentButton");
+
+  editStudentButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () => handleEditStudent(itemId));
+  });
+  const deleteStudentButtons = document.querySelectorAll(".deleteStudentButton");
+  deleteStudentButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () => handleDeleteStudent(itemId));
+  });
+}
+
 function addEventListenersToClassSection() {
   const addClassButton = document.querySelector("#addClassButton");
   addClassButton.addEventListener("click", handleAddClassClick);
@@ -117,40 +159,6 @@ function addEventListenersToClassSection() {
   deleteClassButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () => handleDeleteClass(itemId));
-  });
-}
-function addEventListenersToTeacherSection() {
-  const addTeacherButton = document.querySelector("#addTeacherButton");
-  addTeacherButton.addEventListener("click", handleAddTeacherClick);
-  const editTeacherButtons = document.querySelectorAll(".editTeacherButton");
-  editTeacherButtons.forEach((button) => {
-    const itemId = button.getAttribute("data-id");
-    button.addEventListener("click", () => handleEditTeacher(itemId));
-  });
-  const deleteTeacherButtons = document.querySelectorAll(
-    ".deleteTeacherButton"
-  );
-  deleteTeacherButtons.forEach((button) => {
-    const itemId = button.getAttribute("data-id");
-    button.addEventListener("click", () => handleDeleteTeacher(itemId));
-  });
-}
-function addEventListenersToStudentSection() {
-  const addStudentButton = document.querySelector("#addStudentButton");
-  addStudentButton.addEventListener("click", handleAddStudentClick);
-
-  const editStudentButtons = document.querySelectorAll(".editStudentButton");
-
-  editStudentButtons.forEach((button) => {
-    const itemId = button.getAttribute("data-id");
-    button.addEventListener("click", () => handleEditStudent(itemId));
-  });
-  const deleteStudentButtons = document.querySelectorAll(
-    ".deleteStudentButton"
-  );
-  deleteStudentButtons.forEach((button) => {
-    const itemId = button.getAttribute("data-id");
-    button.addEventListener("click", () => handleDeleteStudent(itemId));
   });
 }
 
@@ -189,4 +197,3 @@ function navigationLinkItem(linkName, handler) {
 }
 
 initializeApp();
-//calling the function that triggers the whole structure.
