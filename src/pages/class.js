@@ -1,4 +1,4 @@
-import { getClasses, getTeacherForClass } from "../services/classService.js";
+import { getClasses, getTeacherForClass } from "../pages/index.js";
 
 const renderClassSection = () => {
   const classData = getClasses();
@@ -20,9 +20,7 @@ const renderClassSection = () => {
               }" class="bi bi-dash-circle mr-2 deleteClassButton"></i>
             </div>
             <h5 class="card-title">${pclass.name || ""}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${
-              getTeacherForClass(pclass.teacherId).name || ""
-            }</h6>
+            <h6 class="card-subtitle mb-2 text-muted">${""}</h6>
             <p class="card-text">
             ${pclass.description || ""}
             </p>
@@ -40,7 +38,7 @@ const renderClassSection = () => {
       <i data-bs-toggle="modal" data-bs-target="#formArea" id="addClassButton" class="bi bi-plus-circle addIcon"></i>
       <p class="text">Add new Class</p> 
     </div>
-  </div>
+    </div>
   <div class="card my-4">
     <div class="card-body">
       <h5 class="card-title">HiCoder 23/24 LMS</h5>
