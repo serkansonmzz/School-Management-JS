@@ -36,11 +36,6 @@ const saveTeacher = (teacher) => {
 const updateTeacher = (teacherId, updatedInfo) => {
   let schoolData = getFromLocalStorage("schoolData") || [];
 
-  if (updatedInfo.classes && updatedInfo.students) {
-    updatedInfo.classes = updatedInfo.classes.map(Number);
-    updatedInfo.students = updatedInfo.students.map(Number);
-  }
-
   schoolData = schoolData.map((item) => {
     if (item.type === "teacher" && item.id === Number(teacherId)) {
       return { ...item, ...updatedInfo };
@@ -49,6 +44,7 @@ const updateTeacher = (teacherId, updatedInfo) => {
   });
   saveToLocalStorage("schoolData", schoolData);
 };
+
 const deleteTeacher = (teacherId) => {
   let schoolData = getFromLocalStorage("schoolData") || [];
   schoolData = schoolData.filter(
