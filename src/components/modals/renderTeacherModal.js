@@ -6,6 +6,7 @@ import {
   getStudents,
   saveTeacher,
   updateTeacher,
+  convertToBase64,
 } from "../../pages/index.js";
 
 let isEdit;
@@ -43,12 +44,16 @@ const addEventListenerTeacherSubmit = (
 
       const formData = new FormData(event.target);
 
+      const profileImage = document.getElementById("profileImage");
+      formData.append("img", profileImage.src);
+
       const addedTeacher = {
         name: formData.get("name"),
         title: formData.get("title"),
         description: formData.get("description"),
         classes: formData.getAll("classes").map(Number),
         students: formData.getAll("students").map(Number),
+        img: profileImage.src,
       };
 
       let errors = validateTeacherData(addedTeacher);
@@ -126,6 +131,33 @@ const createStudentSelectHtml = (isEdit, allStudentData, teacherData) => {
     </div>`;
 };
 
+const createImageUploadHtml = (teacherData) => {
+  return `
+    <div class="card imgholder">
+      <label for="img" class="upload">
+        <input type="file" name="img" id="img" onchange="handleImageUpload(event)" />
+        <i class="bi bi-plus-circle-dotted"></i>
+      </label>
+      <img
+        src="${teacherData.img || "./img/Profile_Icon.webp"}"
+        alt="Profile Image"
+        width="200"
+        height="200"
+        class="img"
+        id="profileImage"
+      />
+    </div>
+  `;
+};
+
+window.handleImageUpload = (event) => {
+  const file = event.target.files[0];
+  const profileImage = document.getElementById("profileImage");
+  convertToBase64(file, (base64Img) => {
+    profileImage.src = base64Img;
+  });
+};
+
 const createTeacherModalHtml = (modalTitle, teacherData) => {
   const allClassData = getClasses();
   const allStudentData = getStudents();
@@ -144,19 +176,7 @@ const createTeacherModalHtml = (modalTitle, teacherData) => {
       </div>
       <div class="modal-body">
         <form action="#" id="teacherForm">
-          <div class="card imgholder">
-            <label for="img" class="upload">
-              <input type="file" name="img" id="img" />
-              <i class="bi bi-plus-circle-dotted"></i>
-            </label>
-            <img
-              src="./img/Profile_Icon.webp"
-              alt=""
-              width="200"
-              height="200"
-              class="img"
-            />
-          </div>
+          ${createImageUploadHtml(teacherData)}
           <div class="inputField">
             <div>
               <label for="name">Name:</label>

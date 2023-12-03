@@ -44,12 +44,15 @@ const addEventListenerClassSubmit = (
       event.preventDefault();
 
       const formData = new FormData(event.target);
+      const profileImage = document.getElementById("profileImage");
+      formData.append("img", profileImage.src);
 
       const classInfoForm = {
         name: formData.get("name"),
         description: formData.get("description"),
         students: formData.getAll("students").map(Number),
         teachers: formData.getAll("teachers").map(Number),
+        img: profileImage.src,
       };
 
       let errors = validateClassData(classInfoForm);
@@ -126,6 +129,24 @@ const createTeacherSelectHtml = (isEdit, classData, allTeacherData) => {
     </div>
   `;
 };
+const createImageUploadHtml = (classData) => {
+  return `
+    <div class="card imgholder">
+      <label for="img" class="upload">
+        <input type="file" name="img" id="img" onchange="handleImageUpload(event)" />
+        <i class="bi bi-plus-circle-dotted"></i>
+      </label>
+      <img
+        src="${classData.img || "./img/Profile_Icon.webp"}"
+        alt="Profile Image"
+        width="200"
+        height="200"
+        class="img"
+        id="profileImage"
+      />
+    </div>
+  `;
+};
 
 const createClassModalHtml = (modalTitle, classData) => {
   let allStudentData = getStudents();
@@ -147,19 +168,7 @@ const createClassModalHtml = (modalTitle, classData) => {
       </div>
       <div class="modal-body">
         <form action="#" id="classForm">
-          <div class="card imgholder">
-            <label for="img" class="upload">
-              <input type="file" name="img" id="img" />
-              <i class="bi bi-plus-circle-dotted"></i>
-            </label>
-            <img
-              src="./img/Profile_Icon.webp"
-              alt=""
-              width="200"
-              height="200"
-              class="img"
-            />
-          </div>
+          ${createImageUploadHtml(classData)}
           <div class="inputField">
             <div>
               <label for="name">Name:</label>

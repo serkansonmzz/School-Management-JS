@@ -42,6 +42,8 @@ const addEventListenerStudentSubmit = (
       event.preventDefault();
 
       const formData = new FormData(event.target);
+      const profileImage = document.getElementById("profileImage");
+      formData.append("img", profileImage.src);
 
       const studentInfoForm = {
         name: formData.get("name"),
@@ -49,6 +51,7 @@ const addEventListenerStudentSubmit = (
         description: formData.get("description"),
         classes: formData.getAll("classes").map(Number),
         grades: formData.getAll("grades").map(Number),
+        img: profileImage.src,
       };
 
       let errors = validateStudentData(studentInfoForm);
@@ -117,7 +120,6 @@ const createGradesHtml = (isEdit, studentData) => {
           )
           .join("")
       : '<input type="number" name="grades" placeholder="Grade 1" style="margin-left:35px;" />';
-
   return `
     <div id="grades-container">
       <label for="grades">Grades:</label>
@@ -146,6 +148,24 @@ const createClassSelectHtml = (isEdit, allClassData, studentData) => {
     </div>
     `;
 };
+const createImageUploadHtml = (studentData) => {
+  return `
+    <div class="card imgholder">
+      <label for="img" class="upload">
+        <input type="file" name="img" id="img" onchange="handleImageUpload(event)" />
+        <i class="bi bi-plus-circle-dotted"></i>
+      </label>
+      <img
+        src="${studentData.img || "./img/Profile_Icon.webp"}"
+        alt="Profile Image"
+        width="200"
+        height="200"
+        class="img"
+        id="profileImage"
+      />
+    </div>
+  `;
+};
 
 const createStudentModalHtml = (modalTitle, studentData) => {
   const allClassData = getClasses();
@@ -165,19 +185,7 @@ const createStudentModalHtml = (modalTitle, studentData) => {
         </div>
         <div class="modal-body">
           <form action="#" id="studentForm">
-            <div class="card imgholder">
-              <label for="img" class="upload">
-                <input type="file" name="img" id="img" />
-                <i class="bi bi-plus-circle-dotted"></i>
-              </label>
-              <img
-                src="./img/Profile_Icon.webp"
-                alt=""
-                width="200"
-                height="200"
-                class="img"
-              />
-            </div>
+            ${createImageUploadHtml(studentData)}
             <div class="inputField">
               <div>
                 <label for="name">Name:</label>

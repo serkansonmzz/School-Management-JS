@@ -114,14 +114,16 @@ function handleDeleteTeacher(itemId) {
 function addEventListenersToTeacherSection() {
   const addTeacherButton = document.querySelector("#addTeacherButton");
   addTeacherButton.addEventListener("click", handleAddTeacherClick);
-  
+
   const editTeacherButtons = document.querySelectorAll(".editTeacherButton");
   editTeacherButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () => handleEditTeacher(itemId));
   });
-  
-  const deleteTeacherButtons = document.querySelectorAll(".deleteTeacherButton");
+
+  const deleteTeacherButtons = document.querySelectorAll(
+    ".deleteTeacherButton"
+  );
   deleteTeacherButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () => handleDeleteTeacher(itemId));
@@ -138,7 +140,9 @@ function addEventListenersToStudentSection() {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () => handleEditStudent(itemId));
   });
-  const deleteStudentButtons = document.querySelectorAll(".deleteStudentButton");
+  const deleteStudentButtons = document.querySelectorAll(
+    ".deleteStudentButton"
+  );
   deleteStudentButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () => handleDeleteStudent(itemId));
