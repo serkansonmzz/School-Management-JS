@@ -150,7 +150,7 @@ const createTeacherModalHtml = (modalTitle, teacherData) => {
               <i class="bi bi-plus-circle-dotted"></i>
             </label>
             <img
-              src="../img/Profile_Icon.webp"
+              src="/img/Profile_Icon.webp"
               alt=""
               width="200"
               height="200"
