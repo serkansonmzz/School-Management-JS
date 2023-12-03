@@ -1,4 +1,4 @@
-import { getClasses, getTeacherForClass } from "../pages/index.js";
+import { getClasses } from "../pages/index.js";
 
 const renderClassSection = () => {
   const classData = getClasses();
