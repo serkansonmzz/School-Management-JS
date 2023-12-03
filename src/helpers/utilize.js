@@ -5,6 +5,19 @@ const makeActive = (event) => {
   event.currentTarget.classList.add("active");
 };
 
+const convertToBase64 = (file, callback) => {
+  if (file.size > 1000000) {
+    alert("The image is too large! Please select an image smaller than 1MB.");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    callback(e.target.result);
+  };
+  reader.readAsDataURL(file);
+};
+
 const getFromLocalStorage = (key) => {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : null;
@@ -55,4 +68,5 @@ export {
   saveToLocalStorage,
   manageShowModal,
   exposeModal,
+  convertToBase64,
 };
