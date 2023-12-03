@@ -1,4 +1,3 @@
-export { makeActive } from "../helpers/utilize.js";
 export { initializeData } from "../services/data/initData.js";
 export { renderNavbar } from "./navbar.js";
 export { renderDashboard } from "./dashboard.js";
@@ -9,10 +8,14 @@ export { renderFooter } from "./footer.js";
 export { renderTeacherModal } from "../components/modals/renderTeacherModal.js";
 export { renderStudentModal } from "../components/modals/renderStudentModal.js";
 export { renderClassModal } from "../components/modals/renderClassModal.js";
-export { manageShowModal } from "../helpers/utilize.js";
-export { exposeModal } from "../helpers/utilize.js";
-export { getFromLocalStorage } from "../helpers/utilize.js";
-export { saveToLocalStorage } from "../helpers/utilize.js";
+export {
+  getFromLocalStorage,
+  saveToLocalStorage,
+  convertToBase64,
+  makeActive,
+  manageShowModal,
+  exposeModal,
+} from "../helpers/utilize.js";
 export {
   getStudents,
   getStudentById,
