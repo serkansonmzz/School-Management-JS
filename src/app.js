@@ -175,7 +175,13 @@ function initializeApp() {
       return;
     }
 
-    appRoot.innerHTML = renderNavbar() + renderDashboard() + renderFooter();
+    const isLoggedIn = checkLoginStatus();
+
+    if (isLoggedIn) {
+      appRoot.innerHTML = renderNavbar() + renderDashboard() + renderFooter();
+    } else {
+      window.location.href = "/login.html";
+    }
 
     navigationLinks();
 
@@ -198,6 +204,11 @@ function navigationLinkItem(linkName, handler) {
   } else {
     console.error(`Link element with id ${linkName} not found`);
   }
+}
+
+function checkLoginStatus() {
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  return isLoggedIn !== null;
 }
 
 initializeApp();
