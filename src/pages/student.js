@@ -1,65 +1,55 @@
-import { getStudents, getStudentAverageGrade } from "../pages/index.js";
+import {
+  getStudents,
+  getStudentAverageGrade,
+  createAddButton,
+  createEditButton,
+} from "../pages/index.js";
 
 const renderStudentSection = () => {
   const allStudentData = getStudents();
-
   const StudentSection = `
-  <div id="content">
-      <div class="container">
-        <div class="row my-3">
+  <div class="container">
+      <div class="row my-3">
         ${allStudentData
           .map(
-            (student) =>
-              `<div class="col-md-4 mb-3">
-                    <div class="card shadow h-100 px-3">
-                      <div class="card-body">
-                        <div class="d-flex justify-content-end mb-2">
-                          <i data-id="${
-                            student.id
-                          }" class="bi bi-pencil-square mr-2 editStudentButton"></i>
-                          <i data-id="${
-                            student.id
-                          }" class="bi bi-dash-circle mr-2 deleteStudentButton"></i>
-                        </div>
-                        <h5 class="card-title">${student.name}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">${
-                          student.title
-                        }</h6>
-                        <p class="card-text">
-                        ${student.description}
-                        </p>
-                        <a href="#" class="card-link">Average Grade: ${getStudentAverageGrade(
-                          student.id
-                        ).toFixed(1)}</a>
-                      </div>
-                    </div>
-             </div>`
-          )
-          .join("")} 
+            (student) => `
+        <div class="col-md-4 mb-3">
+          <div class="card shadow h-100 px-3">
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div class="img-container">
+                <img src="${
+                  student.img || "../../img/profile_images/user_3.png"
+                }" class="card-img-top"
+                alt="Student">
+              </div>
+              ${createEditButton(student.id, "Student")}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">${student.name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${student.title}</h6>
+              <p class="card-text">${student.description}</p>
+              <p class="card-text avarage-grade">
+                Average Grade: ${getStudentAverageGrade(student.id).toFixed(1)}
+              </p>
+            </div>
+          </div>
         </div>
+        `
+          )
+          .join("")}
       </div>
-   </div>
-<div class="row mt-5">
-  <div class="col text-center">
-    <i
-      data-bs-toggle="modal"
-      data-bs-target="#formArea"
-      id="addStudentButton"
-      class="bi bi-plus-circle addIcon"
-    ></i>
-    <p class="text">Add new Student</p>
-  </div>
-</div>
-<div class="card my-4">
-  <div class="card-body">
-    <h5 class="card-title">HiCoder 23/24 LMS</h5>
-    <p class="card-text">
-      This is a wider card with supporting text below as a natural lead-in
-      to additional content. This content is a little bit longer. This is a
-      wider card with supporting text below as a natural lead-in to
-      additional content. This content is a little bit longer.
-    </p>
-  </div>
+    </div>
+    ${createAddButton("Student")}
+    <div class="card my-4">
+      <div class="card-body">
+        <h5 class="card-title">HiCoder 23/24 LMS</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in
+          to additional content. This content is a little bit longer. This is a
+          wider card with supporting text below as a natural lead-in to
+          additional content. This content is a little bit longer.
+        </p>
+      </div>
 </div>
     `;
 
