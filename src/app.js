@@ -13,6 +13,8 @@ import {
   renderClassModal,
   deleteTeacher,
   deleteStudent,
+  renderLoginPage,
+  checkLoginStatus,
 } from "./pages/index.js";
 
 function refreshStudentSection() {
@@ -20,6 +22,7 @@ function refreshStudentSection() {
   if (contentElement) {
     contentElement.innerHTML = renderStudentSection();
     addEventListenersToStudentSection();
+    addLoadedClassToCards();
   } else {
     console.error("Content element not found");
   }
@@ -29,6 +32,7 @@ function refreshTeacherSection() {
   if (contentElement) {
     contentElement.innerHTML = renderTeacherSection();
     addEventListenersToTeacherSection();
+    addLoadedClassToCards();
   } else {
     console.error("Content element not found");
   }
@@ -38,6 +42,7 @@ function refreshClassSection() {
   if (contentElement) {
     contentElement.innerHTML = renderClassSection();
     addEventListenersToClassSection();
+    addLoadedClassToCards();
   } else {
     console.error("Content element not found");
   }
@@ -66,6 +71,7 @@ function handleDashboardLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderDashboard();
   makeActive(event);
+  addLoadedClassToCards();
 }
 
 function handleTeachersLinkClick(event) {
@@ -73,6 +79,7 @@ function handleTeachersLinkClick(event) {
   contentElement.innerHTML = renderTeacherSection();
   makeActive(event);
   addEventListenersToTeacherSection();
+  addLoadedClassToCards();
 }
 
 function handleStudentsLinkClick(event) {
@@ -80,6 +87,7 @@ function handleStudentsLinkClick(event) {
   contentElement.innerHTML = renderStudentSection();
   makeActive(event);
   addEventListenersToStudentSection();
+  addLoadedClassToCards();
 }
 
 function handleClassesLinkClick(event) {
@@ -87,28 +95,29 @@ function handleClassesLinkClick(event) {
   contentElement.innerHTML = renderClassSection();
   makeActive(event);
   addEventListenersToClassSection();
+  addLoadedClassToCards();
 }
 
 function handleDeleteClass(itemId) {
   const deleteRequest = confirm("Are you sure you want to delete");
   if (deleteRequest) {
     deleteClass(itemId);
+    refreshClassSection();
   }
-  refreshClassSection();
 }
 function handleDeleteStudent(itemId) {
   const deleteRequest = confirm("Are you sure you want to delete");
   if (deleteRequest) {
     deleteStudent(itemId);
+    refreshStudentSection();
   }
-  refreshStudentSection();
 }
 function handleDeleteTeacher(itemId) {
   const deleteRequest = confirm("Are you sure you want to delete");
   if (deleteRequest) {
     deleteTeacher(itemId);
+    refreshTeacherSection();
   }
-  refreshTeacherSection();
 }
 
 function addEventListenersToTeacherSection() {
@@ -179,8 +188,10 @@ function initializeApp() {
 
     if (isLoggedIn) {
       appRoot.innerHTML = renderNavbar() + renderDashboard() + renderFooter();
+      addLoadedClassToCards();
     } else {
-      window.location.href = "/login.html";
+      appRoot.innerHTML = renderLoginPage();
+      loginSubmitEventListener();
     }
 
     navigationLinks();
@@ -188,6 +199,34 @@ function initializeApp() {
     initializeData();
   });
 }
+
+const loginSubmitEventListener = () => {
+  const loginForm = document.getElementById("loginForm");
+
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (e.target && e.target.id === "loginForm") {
+      const formData = new FormData(e.target);
+
+      const user = {
+        firstName: formData.get("firstname").trim(),
+        lastName: formData.get("lastname").trim(),
+        password: formData.get("password").trim(),
+      };
+
+      if (user.password !== "Hicoders_2024") {
+        alert("Incorrect password");
+        return;
+      }
+      sessionStorage.setItem(
+        "isLoggedIn",
+        `${user.firstName} ${user.lastName}`
+      );
+      window.location.href = "./index.html";
+    }
+  });
+};
 
 function navigationLinks() {
   navigationLinkItem("dashboardLink", handleDashboardLinkClick);
@@ -205,10 +244,12 @@ function navigationLinkItem(linkName, handler) {
     console.error(`Link element with id ${linkName} not found`);
   }
 }
-
-function checkLoginStatus() {
-  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
-  return isLoggedIn !== null;
+function addLoadedClassToCards() {
+  setTimeout(() => {
+    document.querySelectorAll(".col-md-4 .card").forEach((card) => {
+      card.classList.add("loaded");
+    });
+  }, 100);
 }
 
 initializeApp();
