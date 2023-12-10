@@ -50,6 +50,7 @@ const addEventListenerClassSubmit = (
       const classInfoForm = {
         name: formData.get("name"),
         description: formData.get("description"),
+        title: formData.get("title"),
         students: formData.getAll("students").map(Number),
         teachers: formData.getAll("teachers").map(Number),
         img: profileImage.src,
@@ -137,7 +138,7 @@ const createImageUploadHtml = (classData) => {
         <i class="bi bi-plus-circle-dotted"></i>
       </label>
       <img
-        src="${classData.img || "./img/Profile_Icon.webp"}"
+        src="${classData.img || "./img/class_images/programming-language.png"}"
         alt="Profile Image"
         width="200"
         height="200"
@@ -174,6 +175,12 @@ const createClassModalHtml = (modalTitle, classData) => {
               <label for="name">Name:</label>
               <input type="text" name="name" id="name" value="${
                 classData.name || ""
+              }"  />
+            </div>
+            <div>
+              <label for="title">Title:</label>
+              <input type="text" name="title" id="title" value="${
+                classData.title || "Unknown"
               }"  />
             </div>
             <div>

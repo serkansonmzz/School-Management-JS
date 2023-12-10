@@ -156,7 +156,7 @@ const createImageUploadHtml = (studentData) => {
         <i class="bi bi-plus-circle-dotted"></i>
       </label>
       <img
-        src="${studentData.img || "./img/Profile_Icon.webp"}"
+        src="${studentData.img || "./img/profile_images/user_3.png"}"
         alt="Profile Image"
         width="200"
         height="200"
