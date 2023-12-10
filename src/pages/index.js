@@ -8,6 +8,9 @@ export { renderFooter } from "./footer.js";
 export { renderTeacherModal } from "../components/modals/renderTeacherModal.js";
 export { renderStudentModal } from "../components/modals/renderStudentModal.js";
 export { renderClassModal } from "../components/modals/renderClassModal.js";
+export { renderLoginPage } from "./login.js";
+export { createAddButton } from "../components/buttons/addButton.js";
+export { createEditButton } from "../components/buttons/editButton.js";
 export {
   getFromLocalStorage,
   saveToLocalStorage,
@@ -15,7 +18,10 @@ export {
   makeActive,
   manageShowModal,
   exposeModal,
+  checkLoginStatus,
+  getFromSessionStorage,
 } from "../helpers/utilize.js";
+
 export {
   getStudents,
   getStudentById,
@@ -24,6 +30,7 @@ export {
   deleteStudent,
   getClassesForStudent,
   getStudentAverageGrade,
+  totalStudentCount,
 } from "../services/studentService.js";
 export {
   getTeachers,
@@ -32,6 +39,7 @@ export {
   updateTeacher,
   deleteTeacher,
   getClassesForTeacher,
+  totalTeacherCount,
 } from "../services/teacherService.js";
 export {
   getClasses,
@@ -40,4 +48,5 @@ export {
   updateClass,
   deleteClass,
   getTeacherForClass,
+  totalClassCount,
 } from "../services/classService.js";
