@@ -11,10 +11,13 @@ body {
 }
 a {
   text-decoration: none;
-  color: #6464e3;
+  color: #9a99e5;
 }
 a:hover {
   color: #4b4bd1; 
+}
+.avarage-grade{
+  color:#4b4bd1;  ;
 }
 ul li {
   list-style-type: none;
@@ -38,9 +41,63 @@ i {
   cursor: pointer;
   margin-right: 10px;
 }
+#span_thirt{
+  color: rgb(100, 100, 227);
+  font-weight: 600;
+  margin-left: 3px;
+}
+#span_first{
+  color: rgb(100, 100, 227);
+  font-weight: 600;
+  margin-right: 3px;
+  font-size: 20px;
+}
 
-.card {
-  border-radius: 5px;
+#span_second{
+  color: #4b4bd1;
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.d-flex a {
+  margin-left: 5px;
+}
+
+.col-md-4 .card{
+  border-radius: 10px;
+  min-height: 200px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.col-md-4 .card.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* .position-fixed{
+  position: fixed; 
+  bottom: 240px;   
+  right: 20px;    
+  z-index: 1000;
+} */
+
+.img-container{
+  width: 75px;
+  margin-top:10px;
+  padding-left:10px;
+
+}
+.logo{
+  width: 75px;
+  margin-top:10px;
+  padding-left:10px;
+}
+.img-container img {
+  border-radius: 8px;
+}
+.icon-container{
+  margin-top:-30px;
 }
 
 
@@ -73,22 +130,45 @@ i {
   margin-left: 15px;
 }
 
-/*media*/
-@media (max-width: 992px) { 
-  .navbar .container-fluid {
-      justify-content: start;
+/* media Area */
+/* Küçük ekranlar için ayarlar, örneğin telefonlar */
+@media (max-width: 767px) {
+  .position-fixed {
+    right: 10px;
+    bottom: -5px;
   }
-
   .navbar-toggler {
       margin-right: auto;
   }
 }
 
-@media (max-width: 375px) {
+/* Küçük ve orta boy tabletler için */
+@media (min-width: 768px) and (max-width: 991px) {
+  .position-fixed {
+    right: 15px;
+    bottom: 180px;
+  }
+  .navbar .container-fluid {
+      justify-content: flex-start;
+  }
+}
+
+/* Büyük tabletler ve dizüstü bilgisayarlar için */
+@media (min-width: 992px) {
+  .position-fixed {
+    right: 20px;
+    bottom: 240px;
+  }
+}
+
+/* Çok küçük cihazlar (bazı eski telefonlar) için */
+@media (max-width: 374px) {
   .card {
       margin-bottom: 15px; 
   }
 }
+
+
 /* modal Area */
 .modal-header{
   background: #6464E3;
