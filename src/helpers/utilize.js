@@ -62,6 +62,15 @@ const exposeModal = () => {
   });
 };
 
+function checkLoginStatus() {
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  return isLoggedIn !== null;
+}
+function getFromSessionStorage(key) {
+  const userInfo = sessionStorage.getItem(key) || null;
+  return userInfo;
+}
+
 export {
   makeActive,
   getFromLocalStorage,
@@ -69,4 +78,6 @@ export {
   manageShowModal,
   exposeModal,
   convertToBase64,
+  checkLoginStatus,
+  getFromSessionStorage,
 };
