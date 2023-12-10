@@ -63,6 +63,11 @@ const deleteStudent = (studentId) => {
   saveToLocalStorage("schoolData", schoolData);
 };
 
+const totalStudentCount = () => {
+  const schoolData = getFromLocalStorage("schoolData") || [];
+  return schoolData.filter((item) => item.type === "student").length;
+};
+
 export {
   getStudents,
   getStudentById,
@@ -71,4 +76,5 @@ export {
   deleteStudent,
   getClassesForStudent,
   getStudentAverageGrade,
+  totalStudentCount,
 };

@@ -53,6 +53,11 @@ const deleteTeacher = (teacherId) => {
   saveToLocalStorage("schoolData", schoolData);
 };
 
+const totalTeacherCount = () => {
+  const schoolData = getFromLocalStorage("schoolData") || [];
+  return schoolData.filter((item) => item.type === "teacher").length;
+};
+
 export {
   getTeachers,
   getTeacherById,
@@ -60,4 +65,5 @@ export {
   updateTeacher,
   deleteTeacher,
   getClassesForTeacher,
+  totalTeacherCount,
 };
