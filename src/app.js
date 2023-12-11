@@ -121,11 +121,14 @@ function handleDeleteTeacher(itemId) {
   }
 }
 
-function handleStudentsListClick(text, classId) {
-  renderListModal(text, classId);
+function handleStudentsListClick(itemId, text, isTeacher = false) {
+  renderListModal(itemId, text, isTeacher);
 }
-function handleTeachersListClick(text, classId) {
-  renderListModal(text, classId);
+function handleTeachersListClick(itemId, text) {
+  renderListModal(itemId, text);
+}
+function handleClassesListClick(itemId, text) {
+  renderListModal(itemId, text);
 }
 
 function addEventListenersToTeacherSection() {
@@ -144,6 +147,22 @@ function addEventListenersToTeacherSection() {
   deleteTeacherButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () => handleDeleteTeacher(itemId));
+  });
+
+  const studentListButtons = document.querySelectorAll(".studentListBtn");
+  studentListButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () =>
+      handleStudentsListClick(itemId, "Student", true)
+    );
+  });
+
+  const classListButtons = document.querySelectorAll(".classesListBtn");
+  classListButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () =>
+      handleClassesListClick(itemId, "Class")
+    );
   });
 }
 
@@ -182,15 +201,15 @@ function addEventListenersToClassSection() {
     button.addEventListener("click", () => handleDeleteClass(itemId));
   });
 
-  const studentListButtons = document.querySelectorAll("#studentListBtn");
+  const studentListButtons = document.querySelectorAll(".studentListBtn");
   studentListButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () =>
-      handleStudentsListClick(itemId, "Student")
+      handleStudentsListClick(itemId, "Student", false)
     );
   });
 
-  const teacherListButtons = document.querySelectorAll("#teacherListBtn");
+  const teacherListButtons = document.querySelectorAll(".teacherListBtn");
   teacherListButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () =>
