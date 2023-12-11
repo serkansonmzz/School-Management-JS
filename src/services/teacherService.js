@@ -16,7 +16,7 @@ const getClassesForTeacher = (teacherId) => {
 
   const teacherInfo = getTeacherById(teacherId);
 
-  const findedTeacherClasses = teacherInfo
+  const foundedTeacherClasses = teacherInfo
     ? teacherInfo.classes.map((classId) =>
         schoolData.find(
           (item) => item.type === "class" && item.id === Number(classId)
@@ -24,7 +24,23 @@ const getClassesForTeacher = (teacherId) => {
       )
     : [];
 
-  return findedTeacherClasses;
+  return foundedTeacherClasses;
+};
+
+const getStudentsForTeacher = (teacherId) => {
+  const schoolData = getFromLocalStorage("schoolData") || [];
+
+  const teacherInfo = getTeacherById(teacherId);
+
+  const foundTeacherStudents = teacherInfo
+    ? teacherInfo.students.map((studentId) =>
+        schoolData.find(
+          (item) => item.type === "student" && item.id === Number(studentId)
+        )
+      )
+    : [];
+
+  return foundTeacherStudents;
 };
 
 const saveTeacher = (teacher) => {
@@ -65,5 +81,6 @@ export {
   updateTeacher,
   deleteTeacher,
   getClassesForTeacher,
+  getStudentsForTeacher,
   totalTeacherCount,
 };
