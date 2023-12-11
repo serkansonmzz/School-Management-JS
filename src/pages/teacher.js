@@ -28,8 +28,10 @@ const renderTeacherSection = () => {
               <h5 class="card-title">${teacher.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">${teacher.title}</h6>
               <p class="card-text">${teacher.description}</p>
-              <a href="#" class="card-link">Students</a>
-              <a href="#" class="card-link">Classes</a>
+              <div class="d-flex gap-2">
+                <a href="#" data-id="${teacher.id}" class="card-link studentListBtn">Students</a>
+                <a href="#" data-id="${teacher.id}" class="card-link classesListBtn">Classes</a>
+              </div>
             </div>
           </div>
         </div>
