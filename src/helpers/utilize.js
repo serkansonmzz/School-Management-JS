@@ -26,14 +26,14 @@ const saveToLocalStorage = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data));
 };
 
-const manageShowModal = (modalHtml) => {
-  const existingModal = document.querySelector("#formArea");
+const manageShowModal = (modalHtml, modalId) => {
+  const existingModal = document.querySelector(modalId);
   if (existingModal) {
     new bootstrap.Modal(existingModal).show();
   } else {
     document.body.insertAdjacentHTML("beforeend", modalHtml);
     //must be in the html structure before eventListener
-    const createdModal = document.querySelector("#formArea");
+    const createdModal = document.querySelector(modalId);
     const modalInstance = new bootstrap.Modal(createdModal);
 
     // Manage events when the modal is closed
@@ -48,8 +48,8 @@ const manageShowModal = (modalHtml) => {
   }
 };
 
-const exposeModal = () => {
-  const createdModal = document.querySelector("#formArea");
+const exposeModal = (modalId) => {
+  const createdModal = document.querySelector(modalId);
   if (!createdModal) return;
 
   const modalInstance = bootstrap.Modal.getInstance(createdModal);
