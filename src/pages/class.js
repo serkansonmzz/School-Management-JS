@@ -28,8 +28,12 @@ const renderClassSection = () => {
             <h5 class="card-title">${pclass.name || ""}</h5>
             <h6 class="card-subtitle mb-2 text-muted">${pclass.title}</h6>
             <p class="card-text">${pclass.description || ""}</p>
-            <a href="#" class="card-link">Students</a>
-            <a href="#" class="card-link">Teachers</a>
+            <a href="#" data-id="${
+              pclass.id
+            }" id="studentListBtn" class="card-link">Students</a>
+            <a href="#" data-id="${
+              pclass.id
+            }" id="teacherListBtn" class="card-link">Teachers</a>
           </div>
         </div>
       </div>

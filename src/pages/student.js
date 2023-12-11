@@ -50,7 +50,7 @@ const renderStudentSection = () => {
           additional content. This content is a little bit longer.
         </p>
       </div>
-</div>
+  </div>
     `;
 
   return StudentSection;

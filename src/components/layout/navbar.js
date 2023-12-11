@@ -1,4 +1,4 @@
-import { getFromSessionStorage } from "../pages/index.js";
+import { getFromSessionStorage } from "../../pages/index.js";
 const renderNavbar = () => {
   const loggedUserName = getFromSessionStorage("isLoggedIn");
   const navbar = `

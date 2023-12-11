@@ -11,12 +11,30 @@ const getClassById = (classId) => {
     (item) => item.type === "class" && item.id === Number(classId)
   );
 };
-const getTeacherForClass = (teacherId) => {
+const getTeachersForClass = (classId) => {
   const schoolData = getFromLocalStorage("schoolData") || [];
-  const teacherInfo = schoolData.find(
-    (item) => item.type === "teacher" && item.id === Number(teacherId)
+  const classInfo = schoolData.find((pclass) => pclass.id === Number(classId));
+  const teachers = classInfo
+    ? schoolData.filter(
+        (item) =>
+          item.type === "teacher" && classInfo.teachers.includes(item.id)
+      )
+    : [];
+  return teachers;
+};
+const getStudentsForClass = (classId) => {
+  const schoolData = getFromLocalStorage("schoolData") || [];
+  const classInfo = schoolData.find(
+    (item) => item.type === "class" && item.id === Number(classId)
   );
-  return teacherInfo;
+  const students = classInfo
+    ? schoolData.filter(
+        (item) =>
+          item.type === "student" && classInfo.students.includes(item.id)
+      )
+    : [];
+
+  return students;
 };
 
 const saveClass = (classInfo) => {
@@ -55,6 +73,7 @@ export {
   saveClass,
   updateClass,
   deleteClass,
-  getTeacherForClass,
   totalClassCount,
+  getTeachersForClass,
+  getStudentsForClass,
 };

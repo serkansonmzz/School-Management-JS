@@ -63,7 +63,6 @@ const renderDashboard = () => {
     </div>
   </div>
 </div>
-  
   `;
 
   return content;

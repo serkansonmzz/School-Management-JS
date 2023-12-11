@@ -15,6 +15,7 @@ import {
   deleteStudent,
   renderLoginPage,
   checkLoginStatus,
+  renderListModal,
 } from "./pages/index.js";
 
 function refreshStudentSection() {
@@ -120,6 +121,13 @@ function handleDeleteTeacher(itemId) {
   }
 }
 
+function handleStudentsListClick(text, classId) {
+  renderListModal(text, classId);
+}
+function handleTeachersListClick(text, classId) {
+  renderListModal(text, classId);
+}
+
 function addEventListenersToTeacherSection() {
   const addTeacherButton = document.querySelector("#addTeacherButton");
   addTeacherButton.addEventListener("click", handleAddTeacherClick);
@@ -172,6 +180,22 @@ function addEventListenersToClassSection() {
   deleteClassButtons.forEach((button) => {
     const itemId = button.getAttribute("data-id");
     button.addEventListener("click", () => handleDeleteClass(itemId));
+  });
+
+  const studentListButtons = document.querySelectorAll("#studentListBtn");
+  studentListButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () =>
+      handleStudentsListClick(itemId, "Student")
+    );
+  });
+
+  const teacherListButtons = document.querySelectorAll("#teacherListBtn");
+  teacherListButtons.forEach((button) => {
+    const itemId = button.getAttribute("data-id");
+    button.addEventListener("click", () =>
+      handleTeachersListClick(itemId, "Teacher")
+    );
   });
 }
 
