@@ -59,9 +59,9 @@ i {
   font-size: 26px;
 }
 
-.d-flex a {
-  margin-left: 5px;
-}
+/* .card-body .d-flex a {
+  gap: 2px;
+} */
 
 .col-md-4 .card{
   border-radius: 10px;
