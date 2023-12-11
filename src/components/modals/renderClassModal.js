@@ -26,7 +26,7 @@ export const renderClassModal = (
 
   const modalHtml = createClassModalHtml(modalTitle, classData);
 
-  manageShowModal(modalHtml);
+  manageShowModal(modalHtml, "#formArea");
 
   //!Class form submit EventListener
   const modalElement = document.querySelector("#formArea");
@@ -64,7 +64,7 @@ const addEventListenerClassSubmit = (
             ? updateClass(classId, classInfoForm)
             : saveClass(classInfoForm);
           alert(`Class successfully ${isEdit ? "updated" : "added"}!`);
-          exposeModal();
+          exposeModal("#formArea");
           //! needed refresh content
           refreshClassSection();
         } catch (error) {

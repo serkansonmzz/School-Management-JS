@@ -24,7 +24,7 @@ export const renderStudentModal = (
 
   const modalHtml = createStudentModalHtml(modalTitle, studentData);
 
-  manageShowModal(modalHtml);
+  manageShowModal(modalHtml, "#formArea");
 
   addGradeInputs();
 
@@ -62,7 +62,7 @@ const addEventListenerStudentSubmit = (
             ? updateStudent(studentId, studentInfoForm)
             : saveStudent(studentInfoForm);
           alert(`Student successfully ${isEdit ? "updated" : "added"}!`);
-          exposeModal();
+          exposeModal("#formArea");
           refreshStudentSection();
         } catch (error) {
           console.error("An error occurred:", error);

@@ -26,7 +26,7 @@ export const renderTeacherModal = (
 
   const modalHtml = createTeacherModalHtml(modalTitle, teacherData);
 
-  manageShowModal(modalHtml);
+  manageShowModal(modalHtml, "#formArea");
 
   //!Teacher Submit operations
   const modalElement = document.querySelector("#formArea");
@@ -64,7 +64,7 @@ const addEventListenerTeacherSubmit = (
             ? updateTeacher(teacherId, addedTeacher)
             : saveTeacher(addedTeacher);
           alert(`Teacher successfully ${isEdit ? "updated" : "added"}!`);
-          exposeModal();
+          exposeModal("#formArea");
           refreshTeacherSection();
         } catch (error) {
           console.error("An error occurred:", error);
