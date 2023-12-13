@@ -33,7 +33,6 @@ function handleTeachersLinkClick(event) {
   const contentElement = document.querySelector("#content");
   contentElement.innerHTML = renderTeacherSection();
   makeActive(event);
-
   addEventListenersToTeacherSection();
   addLoadedClassToCards();
 }
