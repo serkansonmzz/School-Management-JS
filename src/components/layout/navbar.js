@@ -1,4 +1,4 @@
-import { getFromSessionStorage } from "../../pages/index.js";
+import { getFromSessionStorage } from "../../../src/index.js";
 const renderNavbar = () => {
   const loggedUserName = getFromSessionStorage("isLoggedIn");
   const navbar = `
@@ -36,13 +36,8 @@ const renderNavbar = () => {
               </ul>
             </div>
             </div>
-          </nav>`;
+       </nav>`;
   return navbar;
-};
-
-window.logOut = () => {
-  sessionStorage.clear();
-  window.location.reload();
 };
 
 export { renderNavbar };

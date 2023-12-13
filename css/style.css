@@ -16,6 +16,9 @@ a {
 a:hover {
   color: #4b4bd1; 
 }
+strong{
+  font-size:32px;
+}
 .avarage-grade{
   color:#4b4bd1;  ;
 }
@@ -129,9 +132,13 @@ i {
 .navbar-nav .nav-item{
   margin-left: 15px;
 }
+/* .dashboard-card{
+  height:  120px ;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+} */
 
-/* media Area */
-/* Küçük ekranlar için ayarlar, örneğin telefonlar */
 @media (max-width: 767px) {
   .position-fixed {
     right: 10px;
@@ -142,7 +149,7 @@ i {
   }
 }
 
-/* Küçük ve orta boy tabletler için */
+
 @media (min-width: 768px) and (max-width: 991px) {
   .position-fixed {
     right: 15px;
@@ -153,7 +160,6 @@ i {
   }
 }
 
-/* Büyük tabletler ve dizüstü bilgisayarlar için */
 @media (min-width: 992px) {
   .position-fixed {
     right: 20px;
@@ -161,7 +167,7 @@ i {
   }
 }
 
-/* Çok küçük cihazlar (bazı eski telefonlar) için */
+
 @media (max-width: 374px) {
   .card {
       margin-bottom: 15px; 
@@ -267,4 +273,9 @@ form .inputField > div input{
   padding: 10px; 
   border: none;
   border-bottom: 2px solid #6464E3;
+}
+
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #6464E3 !important;
 }
