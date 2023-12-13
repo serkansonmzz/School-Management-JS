@@ -18,7 +18,7 @@ const schoolData = [
     description:
       "Dynamic Javascript mentor, famous for transforming complex concepts into engaging, easy-to-understand lessons",
     img: "../../../img/teacher_images/Hannes.png",
-    classes: [108, 104],
+    classes: [108, 104, 102],
     students: [1, 3, 6],
   },
   {
@@ -140,7 +140,7 @@ const schoolData = [
     title: "Cybersecurity",
     description:
       "Introductory course in data science, covering key concepts and hands-on experience with data tools",
-    teachers: [1, 2],
+    teachers: [1, 4],
     students: [4, 5, 6],
     img: "../../../img/class_images/cybersecurity.png",
   },
@@ -184,7 +184,7 @@ const schoolData = [
     title: "Javascript",
     description:
       "In-depth exploration of Javascript, from basics to advanced techniques, tailored for aspiring developers",
-    teachers: [3, 5],
+    teachers: [3, 5, 2],
     students: [2, 3, 5],
     img: "../../../img/class_images/js.png",
   },
