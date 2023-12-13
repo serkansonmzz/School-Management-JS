@@ -6,6 +6,7 @@ import {
   manageShowModal,
   exposeModal,
   customizeSelectBox,
+  showSweetAlert,
 } from "../../../src/index.js";
 
 let isEdit;
@@ -61,18 +62,29 @@ const addEventListenerStudentSubmit = (
 
       if (Object.keys(errors).length === 0) {
         try {
-          isEdit
-            ? updateStudent(studentId, studentInfoForm)
-            : saveStudent(studentInfoForm);
-          alert(`Student successfully ${isEdit ? "updated" : "added"}!`);
+          if (isEdit) {
+            updateStudent(studentId, studentInfoForm);
+            showSweetAlert("Student updated successfully!", "success");
+          } else {
+            saveStudent(studentInfoForm);
+            showSweetAlert("Student saved successfully!", "success");
+          }
           exposeModal("#formArea");
           refreshStudentSection();
         } catch (error) {
           console.error("An error occurred:", error);
-          alert(`Error: ${error.message || "Unknown error occurred."}`);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Error: ${error.message || "Unknown error occurred."}`,
+          });
         }
       } else {
-        alert("Validations Errors : " + Object.values(errors).join("\n"));
+        Swal.fire({
+          icon: "error",
+          title: "Validation Error",
+          text: Object.values(errors).join("\n"),
+        });
       }
     }
   });

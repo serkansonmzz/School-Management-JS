@@ -64,19 +64,29 @@ const addEventListenerClassSubmit = (
 
       if (Object.keys(errors).length === 0) {
         try {
-          isEdit
-            ? updateClass(classId, classInfoForm)
-            : saveClass(classInfoForm);
-          alert(`Class successfully ${isEdit ? "updated" : "added"}!`);
+          if (isEdit) {
+            updateClass(classId, classInfoForm);
+            showSweetAlert("Class updated successfully!", "success");
+          } else {
+            saveClass(classInfoForm);
+            showSweetAlert("Class saved successfully!", "success");
+          }
           exposeModal("#formArea");
-          //! needed refresh content
           refreshClassSection();
         } catch (error) {
           console.error("An error occurred:", error);
-          alert(`Error: ${error.message || "Unknown error occurred."}`);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `Error: ${error.message || "Unknown error occurred."}`,
+          });
         }
       } else {
-        alert("Validations Errors : " + Object.values(errors).join("\n"));
+        Swal.fire({
+          icon: "error",
+          title: "Validation Error",
+          text: Object.values(errors).join("\n"),
+        });
       }
     }
   });

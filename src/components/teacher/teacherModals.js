@@ -7,6 +7,7 @@ import {
   saveTeacher,
   updateTeacher,
   customizeSelectBox,
+  showSweetAlert,
 } from "../../../src/index.js";
 
 let isEdit;
@@ -63,22 +64,10 @@ const addEventListenerTeacherSubmit = (
         try {
           if (isEdit) {
             updateTeacher(teacherId, addedTeacher);
-            Swal.fire({
-              position: "middle",
-              icon: "success",
-              title: "Teacher updated successfully!",
-              showConfirmButton: false,
-              timer: 2000,
-            });
+            showSweetAlert("Teacher updated successfully!", "success");
           } else {
             saveTeacher(addedTeacher);
-            Swal.fire({
-              position: "middle",
-              icon: "success",
-              title: "Teacher added successfully!",
-              showConfirmButton: false,
-              timer: 1500,
-            });
+            showSweetAlert("Teacher saved successfully!", "success");
           }
           exposeModal("#formArea");
           refreshTeacherSection();
