@@ -7,6 +7,7 @@ import {
   getStudents,
   getTeachers,
   customizeSelectBox,
+  showSweetAlert,
 } from "../../../src/index.js";
 
 let isEdit;
