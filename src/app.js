@@ -10,7 +10,7 @@ import {
   initializeData,
 } from "./index.js";
 
-function initializeApp() {
+function renderApp() {
   document.addEventListener("DOMContentLoaded", () => {
     const appRoot = document.querySelector("#app");
 
@@ -35,4 +35,4 @@ function initializeApp() {
   });
 }
 
-initializeApp();
+renderApp();

@@ -6,6 +6,7 @@ import {
   makeActive,
   addEventListenersToStudentSection,
   addLoadedClassToCards,
+  showDeleteSweetAlert,
 } from "../../../src/index.js";
 
 function handleAddStudentClick() {
@@ -17,11 +18,7 @@ function handleEditStudent(itemId) {
 }
 
 function handleDeleteStudent(itemId) {
-  const deleteRequest = confirm("Are you sure you want to delete");
-  if (deleteRequest) {
-    deleteStudent(itemId);
-    refreshStudentSection();
-  }
+  showDeleteSweetAlert(itemId, deleteStudent, refreshStudentSection);
 }
 
 function handleStudentsLinkClick(event) {

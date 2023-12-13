@@ -7,6 +7,7 @@ import {
   makeActive,
   addEventListenersToTeacherSection,
   addLoadedClassToCards,
+  showDeleteSweetAlert,
 } from "../../../src/index.js";
 
 function handleAddTeacherClick() {
@@ -18,25 +19,7 @@ function handleEditTeacher(itemId) {
 }
 
 function handleDeleteTeacher(itemId) {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      deleteTeacher(itemId);
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success",
-      });
-      refreshTeacherSection();
-    }
-  });
+  showDeleteSweetAlert(itemId, deleteTeacher, refreshTeacherSection);
 }
 function handleTeachersListClick(itemId, text) {
   renderListModal(itemId, text);

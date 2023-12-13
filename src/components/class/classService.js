@@ -78,25 +78,28 @@ const updateClass = (classId, updatedInfo) => {
     }
 
     if (item.type === "teacher") {
-      if (oldClassData.teachers.includes(item.id) && !updatedInfo.teachers.includes(item.id)) {
-
+      if (
+        oldClassData.teachers.includes(item.id) &&
+        !updatedInfo.teachers.includes(item.id)
+      ) {
         item.classes = item.classes.filter((cid) => cid !== Number(classId));
-
-      } else if (!oldClassData.teachers.includes(item.id) && updatedInfo.teachers.includes(item.id)) {
-
+      } else if (
+        !oldClassData.teachers.includes(item.id) &&
+        updatedInfo.teachers.includes(item.id)
+      ) {
         item.classes.push(Number(classId));
-
       }
     } else if (item.type === "student") {
-      
-      if ( oldClassData.students.includes(item.id) &&!updatedInfo.students.includes(item.id) ) {
-       
+      if (
+        oldClassData.students.includes(item.id) &&
+        !updatedInfo.students.includes(item.id)
+      ) {
         item.classes = item.classes.filter((cid) => cid !== Number(classId));
-
-      } else if (!oldClassData.students.includes(item.id) && updatedInfo.students.includes(item.id)) {
-        
+      } else if (
+        !oldClassData.students.includes(item.id) &&
+        updatedInfo.students.includes(item.id)
+      ) {
         item.classes.push(Number(classId));
-
       }
     }
     return item;

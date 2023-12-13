@@ -7,6 +7,7 @@ import {
   makeActive,
   addEventListenersToClassSection,
   addLoadedClassToCards,
+  showDeleteSweetAlert,
 } from "../../../src/index.js";
 
 function handleAddClassClick() {
@@ -16,11 +17,7 @@ function handleEditClass(itemId) {
   renderClassModal(itemId, refreshClassSection);
 }
 function handleDeleteClass(itemId) {
-  const deleteRequest = confirm("Are you sure you want to delete");
-  if (deleteRequest) {
-    deleteClass(itemId);
-    refreshClassSection();
-  }
+  showDeleteSweetAlert(itemId, deleteClass, refreshClassSection);
 }
 function handleClassesListClick(itemId, text) {
   renderListModal(itemId, text);
