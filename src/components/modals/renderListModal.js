@@ -4,7 +4,7 @@ import {
   getClassesForTeacher,
   getStudentsForTeacher,
   manageShowModal,
-} from "../../pages/index.js";
+} from "../../../src/index.js";
 
 export const renderListModal = (itemId, text, isTeacher = false) => {
   const modalData = getModalData(itemId, text, isTeacher);
@@ -49,21 +49,7 @@ const createListModalHtml = (text, modalData) => {
                     </tr>
                 </thead>
                 <tbody id="modal-table-body">
-                ${modalData
-                  .map((item, index) => {
-                    return `
-                   <tr>
-                      <th scope="row">${index + 1}</th>
-                      <td><img src="${item.img}" alt="${
-                      item.name
-                    }" width="70px" /></td>
-                      <td>${item.name}</td>
-                      <td>${item.title}</td>
-                      <td>${item.description}</td>
-                   </tr>
-                  `;
-                  })
-                  .join("")}
+                  ${createTableBodyRow(modalData)}
                 </tbody>
                 </table>
             </div>
@@ -75,4 +61,30 @@ const createListModalHtml = (text, modalData) => {
         </div>
   `;
   return teacherModal;
+};
+
+const createTableBodyRow = (modalData) => {
+  const tableBodyRow =
+    !modalData || modalData.length === 0
+      ? '<tr><td style="text-align:center" colspan="5"><h4>No data available here</h4></td></tr>'
+      : modalData
+          .map((item, index) => {
+            const imageUrl =
+              item.img || "../../../img/profile_images/user_3.png";
+            return (
+              item &&
+              `
+                <tr>
+                  <th scope="row">${index + 1}</th>
+                  <td><img src="${imageUrl}" width="75"/></td>
+                  <td>${item.name}</td>
+                  <td>${item.title}</td>
+                  <td>${item.description}</td>
+                </tr>
+              `
+            );
+          })
+          .join("");
+
+  return tableBodyRow;
 };
