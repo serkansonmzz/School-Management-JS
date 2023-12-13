@@ -197,7 +197,7 @@ const createClassModalHtml = (modalTitle, classData) => {
               <div>
                 <label for="title">Title:</label>
                 <input type="text" name="title" id="title" value="${
-                  classData.title
+                  classData.title || ""
                 }"  />
               </div>
               <div>
