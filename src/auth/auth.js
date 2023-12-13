@@ -12,7 +12,7 @@ export const renderLoginPage = () => {
             <p style="color: hsl(217, 10%, 50.8%)" class="mb-4">
             This is a simple login page created for demonstration and showcase purposes. You can log in using the following 
             <br/> <span style="font-szie:15px;">password: </span> 
-            <strong style="font-size: 16px; color: purple;"> Hicoders_2024.</strong>  Give it a try.
+            <strong style="font-size: 16px; color: purple;"> Hicoders_2024</strong>  Give it a try.
             </p>
         </div>
           <div class="col-lg-6 mb-5 mb-lg-0">
