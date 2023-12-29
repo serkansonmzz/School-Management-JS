@@ -42,6 +42,7 @@ const saveStudent = (student) => {
   const newStudentId = Date.now();
 
   schoolData.push({ ...student, type: "student", id: newStudentId });
+
   student.classes.forEach((classId) => {
     const classIndex = schoolData.findIndex(
       (item) => item.type === "class" && item.id === Number(classId)
@@ -56,7 +57,7 @@ const saveStudent = (student) => {
 
 const updateStudent = (studentId, updatedInfo) => {
   let schoolData = getFromLocalStorage("schoolData") || [];
-  const oldStudentData = getStudentById(studentId); // getStudentById fonksiyonunuz varsa
+  const oldStudentData = getStudentById(studentId);
 
   schoolData = schoolData.map((item) => {
     if (item.type === "student" && item.id === Number(studentId)) {
