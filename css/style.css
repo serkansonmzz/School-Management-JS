@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'poppins';
+}
+a {
+  text-decoration: none;
+  color: #9a99e5;
+}
+a:hover {
+  color: #4b4bd1; 
+}
+strong{
+  font-size:32px;
+}
+.avarage-grade{
+  color:#4b4bd1;  ;
+}
+ul li {
+  list-style-type: none;
+}
+i {
+  margin-left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.addIcon{
+  font-size: 70px;
+  font-weight:700;
+  text-align: center;
+  justify-content: center;
+  color: rgb(100, 100, 227);
+  cursor: pointer;
+}
+
+.loginBtn {
+  font-size: 50px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+#span_thirt{
+  color: rgb(100, 100, 227);
+  font-weight: 600;
+  margin-left: 3px;
+}
+#span_first{
+  color: rgb(100, 100, 227);
+  font-weight: 600;
+  margin-right: 3px;
+  font-size: 20px;
+}
+
+#span_second{
+  color: #4b4bd1;
+  font-weight: 600;
+  font-size: 26px;
+}
+
+/* .card-body .d-flex a {
+  gap: 2px;
+} */
+
+.col-md-4 .card{
+  border-radius: 10px;
+  min-height: 200px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.col-md-4 .card.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* .position-fixed{
+  position: fixed; 
+  bottom: 240px;   
+  right: 20px;    
+  z-index: 1000;
+} */
+
+.img-container{
+  width: 75px;
+  margin-top:10px;
+  padding-left:10px;
+
+}
+.logo{
+  width: 75px;
+  margin-top:10px;
+  padding-left:10px;
+}
+.img-container img {
+  border-radius: 8px;
+}
+.icon-container{
+  margin-top:-30px;
+}
+
+
+/* Set the base style of links */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  padding-bottom: 5px; 
+}
+
+
+/* spacing for an underlined linkClick to apply */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px; 
+  background-color: #6464e3; 
+  transition: width 0.3s ease; 
+}
+.nav-link.active::after {
+  width: 100%; /* Full width, so that the bottom line is visible */
+}
+
+.navbar-nav .nav-item{
+  margin-left: 15px;
+}
+/* .dashboard-card{
+  height:  120px ;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+} */
+
+@media (max-width: 767px) {
+  .position-fixed {
+    right: 10px;
+    bottom: -5px;
+  }
+  .navbar-toggler {
+      margin-right: auto;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .position-fixed {
+    right: 15px;
+    bottom: 180px;
+  }
+  .navbar .container-fluid {
+      justify-content: flex-start;
+  }
+}
+
+@media (min-width: 992px) {
+  .position-fixed {
+    right: 20px;
+    bottom: 240px;
+  }
+}
+
+
+@media (max-width: 374px) {
+  .card {
+      margin-bottom: 15px; 
+  }
+}
+
+
+/* modal Area */
+.modal-header{
+  background: #6464E3;
+  color: #fff;
+}
+
+.modal-body form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.modal-body form .imgholder{
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.imgholder .upload{
+  position: absolute;
+  bottom: 0;
+  left: 10;
+  width: 100%;
+  height: 100px;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload i{
+  color: #fff;
+  font-size: 35px;
+}
+
+.imgholder:hover .upload{
+  display: flex;
+}
+
+.imgholder .upload input{
+  display: none;
+}
+
+.modal-body form .inputField{
+  flex-basis: 68%;
+  border-left: 5px groove #6464E3;
+  padding-left: 20px;
+}
+
+form .inputField > div{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+form .inputField > div label{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#formArea form .inputField > div label::after{
+  content: "*";
+  color: red;
+}
+
+form .inputField > div input{
+  width: 75%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid #6464E3;
+}
+
+
+.modal-body form .inputField select {
+  border-radius: 5px;
+}
+.modal-body form .inputField > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-body form .inputField select {
+  width: 100%; 
+  margin: 5px 0; 
+  margin-left: 33px;
+  padding: 10px; 
+  border: none;
+  border-bottom: 2px solid #6464E3;
+}
+
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #6464E3 !important;
+}
